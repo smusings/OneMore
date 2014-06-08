@@ -9,111 +9,126 @@
     tools:context=".MainActivity"
     android:layout_centerInParent="true">
 
-    <RelativeLayout
+    <LinearLayout
+        android:orientation="vertical"
         android:id="@+id/visualLayout"
         android:layout_centerInParent="true"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content">
-        <!--Chapters-->
         <LinearLayout
-            android:id="@+id/chapters"
-            android:background="@color/Green"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_margin="10dp">
-            <TextView
+            android:orientation="horizontal"
+            android:layout_gravity="center">
+            <!--Chapters-->
+            <LinearLayout
+                android:id="@+id/chapters"
+                android:background="@color/Green"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/White"
-                android:text="@string/chapters"
-                android:gravity="center"
-                android:textSize="15dp"/>
-            <TextView
-                android:layout_gravity="center"
-                android:id="@+id/chapterCount"
+                android:orientation="vertical"
+                android:layout_margin="20dp">
+                <TextView
+                    android:layout_margin="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/White"
+                    android:text="@string/chapters"
+                    android:gravity="center"
+                    android:textSize="15dp"/>
+                <TextView
+                    android:layout_gravity="center"
+                    android:id="@+id/chapterCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textSize="32dp"
+                    android:textColor="@color/White"/>
+            </LinearLayout>
+            <!--Episode-->
+            <LinearLayout
+                android:id="@+id/episode"
+                android:background="@color/DarkCyan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="0"
-                android:textSize="32dp"
-                android:textColor="@color/White"/>
+                android:orientation="vertical"
+                android:layout_margin="20dp"
+                android:layout_toRightOf="@id/chapters">
+                <TextView
+                    android:layout_margin="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/White"
+                    android:text="@string/episode"
+                    android:gravity="center"
+                    android:textSize="15dp"/>
+                <TextView
+                    android:id="@+id/episodeCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/White"
+                    android:text="0"
+                    android:textSize="32dp"
+                    android:layout_gravity="center"/>
+            </LinearLayout>
         </LinearLayout>
-        <!--Episode-->
         <LinearLayout
-            android:id="@+id/episode"
-            android:background="@color/DarkCyan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_margin="10dp"
-            android:layout_toRightOf="@id/chapters">
-            <TextView
+            android:layout_gravity="center">
+            <!--Game-->
+            <LinearLayout
+                android:id="@+id/game"
+                android:background="@color/Orange"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/White"
-                android:text="@string/episode"
-                android:gravity="center"
-                android:textSize="15dp"/>
-            <TextView
-                android:id="@+id/episodeCount"
+                android:orientation="vertical"
+                android:layout_margin="20dp"
+                android:layout_below="@id/chapters">
+                <TextView
+                    android:layout_margin="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/White"
+                    android:text="@string/game"
+                    android:gravity="center"
+                    android:textSize="15dp"/>
+                <TextView
+                    android:id="@+id/gameCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/White"
+                    android:text="0"
+                    android:textSize="32dp"
+                    android:layout_gravity="center" />
+            </LinearLayout>
+            <!--episode-->
+            <LinearLayout
+                android:id="@+id/level"
+                android:background="@color/DarkOrange"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/White"
-                android:text="0"
-                android:textSize="32dp"
-                android:layout_gravity="center"/>
+                android:orientation="vertical"
+                android:layout_margin="20dp"
+                android:layout_toRightOf="@+id/game"
+                android:layout_below="@+id/episode">
+                <TextView
+                    android:layout_margin="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/White"
+                    android:text="@string/Level"
+                    android:gravity="center"
+                    android:textSize="15dp"/>
+                <TextView
+                    android:id="@+id/levelCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/White"
+                    android:text="0"
+                    android:textSize="32dp"
+                    android:layout_gravity="center"/>
+            </LinearLayout>
         </LinearLayout>
-        <!--Game-->
-        <LinearLayout
-            android:id="@+id/game"
-            android:background="@color/Orange"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_margin="20dp"
-            android:layout_below="@id/chapters">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/White"
-                android:text="@string/game"
-                android:gravity="center"
-                android:textSize="15dp"/>
-            <TextView
-                android:id="@+id/gameCount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/White"
-                android:text="0"
-                android:textSize="32dp"
-                android:layout_gravity="center" />
-        </LinearLayout>
-        <!--episode-->
-        <LinearLayout
-            android:id="@+id/level"
-            android:background="@color/DarkOrange"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_margin="20dp"
-            android:layout_toRightOf="@+id/game"
-            android:layout_below="@+id/episode">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/White"
-                android:text="@string/Level"
-                android:gravity="center"
-                android:textSize="15dp"/>
-            <TextView
-                android:id="@+id/levelCount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/White"
-                android:text="0"
-                android:textSize="32dp"
-                android:layout_gravity="center"/>
-        </LinearLayout>
-    </RelativeLayout>
-
+    </LinearLayout>
 </RelativeLayout>

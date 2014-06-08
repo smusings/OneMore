@@ -4,9 +4,9 @@
     <string name="app_name">OneMore</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-    <string name="chapters">One More Chapter: </string>
-    <string name="episode">One More Episode: </string>
-    <string name="game">One More Game: </string>
-    <string name="Level">One More Level: </string>
+    <string name="chapters">One More \nChapter: </string>
+    <string name="episode">One More \nEpisode: </string>
+    <string name="game">One More \nGame: </string>
+    <string name="Level">One More \nLevel: </string>
 
 </resources>
