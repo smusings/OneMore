@@ -1,6 +1,7 @@
 package com.smusing.onemore.app;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -28,21 +29,25 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //define our Layouts so you can click on the layout as a whole.
         episode=(LinearLayout) findViewById(R.id.episode);
         game=(LinearLayout) findViewById(R.id.game);
         level=(LinearLayout) findViewById(R.id.level);
         chapter=(LinearLayout) findViewById(R.id.chapters);
 
+        //define our TextViews
         episodetv=(TextView) findViewById(R.id.episodeCount);
         gametv=(TextView) findViewById(R.id.gameCount);
         leveltv=(TextView) findViewById(R.id.levelCount);
         chaptertv=(TextView) findViewById(R.id.chapterCount);
 
+        //Set the numbers to 0 so we can do maths
         episodetv.setText(initial.toString());
         gametv.setText(initial.toString());
         leveltv.setText(initial.toString());
         chaptertv.setText(initial.toString());
 
+        //when a layout is clicked we add +1 to the textview associated with it.
         episode.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 String skr=episodetv.getText().toString();
@@ -80,24 +85,27 @@ public class MainActivity extends Activity {
         });
     }
 
-
-
-
+    //sets up menu
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
 
+    //sets up the menu options.
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_reset) {
+            episodetv.setText(initial.toString());
+            gametv.setText(initial.toString());
+            leveltv.setText(initial.toString());
+            chaptertv.setText(initial.toString());
             return true;
+        }
+        if (id==R.id.action_about){
+            Intent intent=new Intent(this, About.class);
+            startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
     }
