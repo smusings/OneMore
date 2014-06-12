@@ -79,14 +79,6 @@ implements OneMoreChapter.OmChapterListener{
             }
         });
 
-        chapter.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
-                String skr=chaptertv.getText().toString();
-                int sk=Integer.valueOf(skr);
-                int count=sk+1;
-                chaptertv.setText(Integer.toString(count));
-            }
-        });
     }
 
     //sets up menu
