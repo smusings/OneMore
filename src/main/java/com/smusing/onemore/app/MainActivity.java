@@ -1,8 +1,8 @@
 package com.smusing.onemore.app;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -10,7 +10,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
-public class MainActivity extends Activity {
+public class MainActivity extends FragmentActivity
+implements OneMoreChapter.OmChapterListener{
 
     TextView episodetv;
     TextView gametv;
@@ -23,6 +24,10 @@ public class MainActivity extends Activity {
     LinearLayout chapter;
 
     final Number initial=0;
+
+    public void omchapter(Number n){
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +44,6 @@ public class MainActivity extends Activity {
         episodetv=(TextView) findViewById(R.id.episodeCount);
         gametv=(TextView) findViewById(R.id.gameCount);
         leveltv=(TextView) findViewById(R.id.levelCount);
-        chaptertv=(TextView) findViewById(R.id.chapterCount);
 
         //Set the numbers to 0 so we can do maths
         episodetv.setText(initial.toString());

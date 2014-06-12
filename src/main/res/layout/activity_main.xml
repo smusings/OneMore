@@ -22,30 +22,11 @@
             android:orientation="horizontal"
             android:layout_gravity="center">
             <!--Chapters-->
-            <LinearLayout
+            <fragment
+                android:name="com.smusing.onemore.app.OneMoreChapter"
                 android:id="@+id/chapters"
-                android:background="@color/Green"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_margin="15dp">
-                <TextView
-                    android:layout_margin="10dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/White"
-                    android:text="@string/chapters"
-                    android:gravity="center"
-                    android:textSize="15dp"/>
-                <TextView
-                    android:layout_gravity="center"
-                    android:id="@+id/chapterCount"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="0"
-                    android:textSize="32dp"
-                    android:textColor="@color/White"/>
-            </LinearLayout>
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
             <!--Episode-->
             <LinearLayout
                 android:id="@+id/episode"
@@ -53,8 +34,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_margin="15dp"
-                android:layout_toRightOf="@id/chapters">
+                android:layout_margin="15dp">
                 <TextView
                     android:layout_margin="10dp"
                     android:layout_width="wrap_content"
