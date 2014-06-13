@@ -21,26 +21,24 @@ public class MainActivity extends FragmentActivity
     LinearLayout episode;
     LinearLayout game;
     LinearLayout level;
-    LinearLayout chapter;
+
 
     final Number initial=0;
 
     public void omchapter(Number n){
-        OneMoreChapter omc=(OneMoreChapter)getSupportFragmentManager().findFragmentById(R.id.chapter_count);
-
+        chaptertv=(TextView)findViewById(R.id.chapter_count);
+        String c_count=chaptertv.getText().toString();
         int nz=Integer.valueOf(n.intValue());
         if (nz == 1){
-            String s=omc.gettext().toString();
-            int countz=Integer.valueOf(s);
+            int countz=Integer.valueOf(c_count);
             int nu_count=countz+nz;
             String st=Integer.toString(nu_count);
-            omc.changeText(st);
+            chaptertv.setText(st);
         } else if (nz == -1){
-            String s=omc.gettext().toString();
-            int countz=Integer.valueOf(s);
+            int countz=Integer.valueOf(c_count);
             int nu_count=countz+nz;
             String st=Integer.toString(nu_count);
-            omc.changeText(st);
+            chaptertv.setText(st);
         }
     }
 
@@ -57,17 +55,20 @@ public class MainActivity extends FragmentActivity
         game=(LinearLayout) findViewById(R.id.game);
         level=(LinearLayout) findViewById(R.id.level);
 
+        chaptertv=(TextView)findViewById(R.id.chapter_count);
+
         //define our TextViews
         episodetv=(TextView) findViewById(R.id.episodeCount);
         gametv=(TextView) findViewById(R.id.gameCount);
         leveltv=(TextView) findViewById(R.id.levelCount);
+        chaptertv=(TextView)findViewById(R.id.chapter_count);
 
         //Set the numbers to 0 so we can do maths
         episodetv.setText(initial.toString());
         gametv.setText(initial.toString());
         leveltv.setText(initial.toString());
-        omc.changeText(initial.toString());
-
+        chaptertv.setText(initial.toString());
+        //omc.changeText(initial.toString());
         //when a layout is clicked we add +1 to the textview associated with it.
         episode.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
