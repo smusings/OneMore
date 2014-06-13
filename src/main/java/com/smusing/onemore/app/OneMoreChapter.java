@@ -1,7 +1,7 @@
 package com.smusing.onemore.app;
 
 import android.app.Activity;
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.v4.view.GestureDetectorCompat;
 import android.view.GestureDetector;
@@ -26,9 +26,9 @@ public class OneMoreChapter extends Fragment{
         View view = inflater.inflate(R.layout.onemore_fragment, container, false);
 
         //setup to use
-        TextView chaptertext=(TextView)view.findViewById(R.id.onemore_text);
-        TextView chaptercount=(TextView)view.findViewById(R.id.onemore_count);
-        LinearLayout chapterlayout=(LinearLayout)view.findViewById(R.id.onemore_all);
+        TextView chaptertext=(TextView)view.findViewById(R.id.chapter_text);
+        TextView chaptercount=(TextView)view.findViewById(R.id.chapter_count);
+        LinearLayout chapterlayout=(LinearLayout)view.findViewById(R.id.chapter_all);
         chaptertext.setText(R.string.chapters);
 
         //onSwipe Gesture i need
@@ -72,6 +72,15 @@ public class OneMoreChapter extends Fragment{
         return view;
     }
 
+    public void changeText(String text){
+        TextView t = (TextView) this.getView().findViewById(R.id.chapter_count);
+        t.setText(text);
+    }
+    public CharSequence gettext( ){
+        TextView t = (TextView) this.getView().findViewById(R.id.chapter_count);
+        return t.getText();
+    }
+
     //the listener that sends it along
     //the listener locks for a new String/Number message to send to an activity
     public interface OmChapterListener{
@@ -92,5 +101,3 @@ public class OneMoreChapter extends Fragment{
     }
 
 }
-
-
