@@ -1,5 +1,6 @@
 package com.smusing.onemore.app;
 
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -26,19 +27,27 @@ public class MainActivity extends FragmentActivity
     final Number initial=0;
 
     public void omchapter(Number n){
+        OneMoreChapter omc=(OneMoreChapter)getSupportFragmentManager().findFragmentById(R.id.fragment_count);
+        OneMoreChapter omz=new OneMoreChapter();
+
         chaptertv=(TextView)findViewById(R.id.chapter_count);
         String c_count=chaptertv.getText().toString();
         int nz=Integer.valueOf(n.intValue());
+
         if (nz == 1){
             int countz=Integer.valueOf(c_count);
             int nu_count=countz+nz;
             String st=Integer.toString(nu_count);
             chaptertv.setText(st);
+            omz.changText(st);
+
+
         } else if (nz == -1){
             int countz=Integer.valueOf(c_count);
             int nu_count=countz+nz;
             String st=Integer.toString(nu_count);
             chaptertv.setText(st);
+            //omc.changText(st);
         }
     }
 
@@ -46,6 +55,8 @@ public class MainActivity extends FragmentActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        FragmentTransaction ft=getFragmentManager().beginTransaction();
 
         OneMoreChapter omc=(OneMoreChapter)getSupportFragmentManager().findFragmentById(R.id.chapter_count);
 
@@ -70,11 +81,11 @@ public class MainActivity extends FragmentActivity
         chaptertv.setText(initial.toString());
         //omc.changeText(initial.toString());
         //when a layout is clicked we add +1 to the textview associated with it.
-        episode.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
-                String skr=episodetv.getText().toString();
-                int sk=Integer.valueOf(skr);
-                int count=sk+1;
+        episode.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                String skr = episodetv.getText().toString();
+                int sk = Integer.valueOf(skr);
+                int count = sk + 1;
                 episodetv.setText(Integer.toString(count));
             }
         });

@@ -4,14 +4,13 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.GestureDetectorCompat;
-import android.view.GestureDetector;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 public class OneMoreChapter extends Fragment{
+
 
     //in case i want to do it differently
     private static final String DEBUG_TAG = "Gestures";
@@ -27,6 +26,10 @@ public class OneMoreChapter extends Fragment{
         //setup to use
         TextView chaptertext=(TextView)view.findViewById(R.id.chapter_text);
         chaptertext.setText(R.string.chapters);
+
+
+
+        /*
 
         //onSwipe Gesture i need
         final GestureDetector gesture=new GestureDetector(getActivity(),
@@ -48,15 +51,27 @@ public class OneMoreChapter extends Fragment{
                         return super.onFling(e1, e2, velocityX, velocityY);
                     }
                 });
+                */
 
         //i want to use this eventualy hold and delete things
         chaptertext.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                //possible onlongclick delete the button or listview maybe
                 return false;
             }
         });
+
+        chaptertext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Number n=1;
+                omChapterListener.omchapter(n);
+            }
+        });
+
+
+
+        /*
 
         //this SHOULD send what I need across
         chaptertext.setOnTouchListener(new View.OnTouchListener() {
@@ -65,8 +80,14 @@ public class OneMoreChapter extends Fragment{
                 return gesture.onTouchEvent(event);
             }
         });
+        */
 
         return view;
+    }
+
+    public void changText(String st) {
+        TextView t = (TextView) getView().findViewById(R.id.chapter_count);
+        t.setText(st);
     }
 
     //the listener that sends it along
