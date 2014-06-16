@@ -9,16 +9,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-public class OneMoreChapter extends Fragment{
-
-    TextView chaptertext;
-    Number nul;
-    String ini;
-
+public class ChapterFragment extends Fragment {
 
     //in case i want to do it differently
     private static final String DEBUG_TAG = "Gestures";
+    TextView chaptertext;
+    Number nul;
+    String ini;
     private GestureDetectorCompat mDetector;
+    private OmChapterListener omChapterListener;
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -26,12 +27,12 @@ public class OneMoreChapter extends Fragment{
 
         View view = inflater.inflate(R.layout.chapter_fragment, container, false);
 
-        nul=0;
-        ini=nul.toString();
+        nul = 0;
+        ini = nul.toString();
 
         //setup to use
-        chaptertext=(TextView)view.findViewById(R.id.chapter_text);
-        TextView chaptercount=(TextView) view.findViewById(R.id.fragment_count);
+        chaptertext = (TextView) view.findViewById(R.id.chapter_text);
+        TextView chaptercount = (TextView) view.findViewById(R.id.fragment_count);
         chaptertext.setText(R.string.chapters);
         chaptercount.setText(ini);
 
@@ -72,7 +73,7 @@ public class OneMoreChapter extends Fragment{
         chaptertext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Number n=1;
+                Number n = 1;
                 omChapterListener.omchapter(n);
             }
         });
@@ -91,33 +92,28 @@ public class OneMoreChapter extends Fragment{
         */
 
         return view;
-
     }
 
-
-
     public void doSomething(String s) {
-        TextView chaptercount=(TextView) getView().findViewById(R.id.fragment_count);
+        TextView chaptercount = (TextView) getView().findViewById(R.id.fragment_count);
         chaptercount.setText(s);
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        try {
+            omChapterListener = (OmChapterListener) activity;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(activity.toString() +
+                    " must implement OnNewRollListener");
+        }
     }
 
     //the listener that sends it along
     //the listener locks for a new String/Number message to send to an activity
-    public interface OmChapterListener{
+    public interface OmChapterListener {
         public void omchapter(Number n);
-    }
-
-    private OmChapterListener omChapterListener;
-
-    @Override
-    public void onAttach(Activity activity){
-        super.onAttach(activity);
-        try{
-            omChapterListener=(OmChapterListener)activity;
-        } catch (ClassCastException e){
-            throw new ClassCastException(activity.toString()+
-                    " must implement OnNewRollListener");
-        }
     }
 
 }

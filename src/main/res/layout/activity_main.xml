@@ -18,7 +18,7 @@
         android:orientation="horizontal"
         android:layout_margin="15dp">
         <fragment
-            android:name="com.smusing.onemore.app.OneMoreChapter"
+            android:name="com.smusing.onemore.app.ChapterFragment"
             android:id="@+id/chapters"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
