@@ -1,5 +1,6 @@
 package com.smusing.onemore.app;
 
+import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
@@ -26,10 +27,12 @@ public class MainActivity extends FragmentActivity
 
     final Number initial=0;
 
-    public void omchapter(Number n){
-        OneMoreChapter omc=(OneMoreChapter)getSupportFragmentManager().findFragmentById(R.id.fragment_count);
-        OneMoreChapter omz=new OneMoreChapter();
+    FragmentTransaction ft=getFragmentManager().beginTransaction();
+    OneMoreChapter omc=(OneMoreChapter)getSupportFragmentManager().
+            findFragmentById(R.id.chapter_count);
 
+
+    public void omchapter(Number n){
         chaptertv=(TextView)findViewById(R.id.chapter_count);
         String c_count=chaptertv.getText().toString();
         int nz=Integer.valueOf(n.intValue());
@@ -37,10 +40,9 @@ public class MainActivity extends FragmentActivity
         if (nz == 1){
             int countz=Integer.valueOf(c_count);
             int nu_count=countz+nz;
-            String st=Integer.toString(nu_count);
-            chaptertv.setText(st);
-            omz.changText(st);
-
+            String text=Integer.toString(nu_count);
+            chaptertv.setText(text);
+            omc.doSomething(text);
 
         } else if (nz == -1){
             int countz=Integer.valueOf(c_count);
@@ -56,10 +58,11 @@ public class MainActivity extends FragmentActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        FragmentTransaction ft=getFragmentManager().beginTransaction();
 
-        OneMoreChapter omc=(OneMoreChapter)getSupportFragmentManager().findFragmentById(R.id.chapter_count);
 
+        Fragment newfragment=new Fragment();
+        ft.replace(R.id.fragment_count, newfragment);
+        ft.addToBackStack(null);
 
         //define our Layouts so you can click on the layout as a whole.
         episode=(LinearLayout) findViewById(R.id.episode);
@@ -126,6 +129,7 @@ public class MainActivity extends FragmentActivity
             gametv.setText(initial.toString());
             leveltv.setText(initial.toString());
             chaptertv.setText(initial.toString());
+            omc.doSomething(initial.toString());
             return true;
         }
         if (id==R.id.action_about){

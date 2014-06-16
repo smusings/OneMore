@@ -11,11 +11,14 @@ import android.widget.TextView;
 
 public class OneMoreChapter extends Fragment{
 
+    TextView chaptertext;
+    Number nul;
+    String ini;
+
 
     //in case i want to do it differently
     private static final String DEBUG_TAG = "Gestures";
     private GestureDetectorCompat mDetector;
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -23,9 +26,14 @@ public class OneMoreChapter extends Fragment{
 
         View view = inflater.inflate(R.layout.chapter_fragment, container, false);
 
+        nul=0;
+        ini=nul.toString();
+
         //setup to use
-        TextView chaptertext=(TextView)view.findViewById(R.id.chapter_text);
+        chaptertext=(TextView)view.findViewById(R.id.chapter_text);
+        TextView chaptercount=(TextView) view.findViewById(R.id.fragment_count);
         chaptertext.setText(R.string.chapters);
+        chaptercount.setText(ini);
 
 
 
@@ -83,11 +91,14 @@ public class OneMoreChapter extends Fragment{
         */
 
         return view;
+
     }
 
-    public void changText(String st) {
-        TextView t = (TextView) getView().findViewById(R.id.chapter_count);
-        t.setText(st);
+
+
+    public void doSomething(String s) {
+        TextView chaptercount=(TextView) getView().findViewById(R.id.fragment_count);
+        chaptercount.setText(s);
     }
 
     //the listener that sends it along
