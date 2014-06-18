@@ -23,8 +23,47 @@ public class MainActivity extends FragmentActivity
     LinearLayout game;
     LinearLayout level;
 
-    ChapterFragment omc = (ChapterFragment) getSupportFragmentManager().
-            findFragmentById(R.id.fragment_count);
+
+    public void omchapter(Number n) {
+        //capture the fragment from the fragmentlayout
+        android.support.v4.app.FragmentManager fm=getSupportFragmentManager();
+        ChapterFragment chapterfrag = (ChapterFragment) fm.
+                findFragmentById(R.id.fragment_count);
+
+        //create fragment
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ChapterFragment newFragment = new ChapterFragment();
+
+        if (chapterfrag==null) {
+            ft.detach(newFragment);
+
+            //replace the fragment with a new one, and add it to the back stack
+            ft.replace(R.id.chapterfragment, newFragment);
+            ft.addToBackStack(null);
+
+            //commit the transaction
+            ft.commit();
+        }else {
+            chaptertv = (TextView) findViewById(R.id.chapter_count);
+            String c_count = chaptertv.getText().toString();
+            int nz = Integer.valueOf(n.intValue());
+            if (nz == 1) {
+                int countz = Integer.valueOf(c_count);
+                int nu_count = countz + nz;
+                String text = Integer.toString(nu_count);
+                chaptertv.setText(text);
+                chapterfrag.doSomething(text);
+            } else if (nz == -1) {
+                int countz = Integer.valueOf(c_count);
+                int nu_count = countz + nz;
+                String st = Integer.toString(nu_count);
+                chaptertv.setText(st);
+                //omc.changText(st);
+            }
+        }
+    }
+
+
 
 
     @Override
@@ -82,37 +121,8 @@ public class MainActivity extends FragmentActivity
 
     }
 
-    public void omchapter(Number n) {
-        if (omc != null) {
-            chaptertv = (TextView) findViewById(R.id.chapter_count);
-            String c_count = chaptertv.getText().toString();
-            int nz = Integer.valueOf(n.intValue());
-            if (nz == 1) {
-                int countz = Integer.valueOf(c_count);
-                int nu_count = countz + nz;
-                String text = Integer.toString(nu_count);
-                chaptertv.setText(text);
-                omc.doSomething(text);
-            } else if (nz == -1) {
-                int countz = Integer.valueOf(c_count);
-                int nu_count = countz + nz;
-                String st = Integer.toString(nu_count);
-                chaptertv.setText(st);
-                //omc.changText(st);
-            }
-        } else {
-            //create fragment
-            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ChapterFragment newFragment = new ChapterFragment();
 
-            //replace the fragment with a new one, and add it to the back stack
-            ft.replace(R.id.chapterfragment, newFragment);
-            ft.addToBackStack(null);
 
-            //commit the transaction
-            ft.commit();
-        }
-    }
 
     //sets up menu
     @Override
@@ -124,6 +134,8 @@ public class MainActivity extends FragmentActivity
     //sets up the menu options.
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        ChapterFragment omc = (ChapterFragment) getSupportFragmentManager().
+                findFragmentById(R.id.fragment_count);
         int id = item.getItemId();
         if (id == R.id.action_reset) {
             episodetv.setText(initial.toString());
