@@ -10,5 +10,7 @@
     <string name="episode">One More Episode: </string>
     <string name="game">One More Game: </string>
     <string name="Level">One More Level: </string>
+    <string name="one_more">One More ...</string>
+    <string name="add">Add</string>
 
 </resources>
