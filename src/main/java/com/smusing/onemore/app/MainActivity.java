@@ -23,11 +23,10 @@ public class MainActivity extends Activity {
 
     //identify the elemts we are using
     private ArrayAdapter aa;
-    private ArrayList<String> list;
+    private ArrayList<String> list =new ArrayList<String>();
     private ListView lv;
     private EditText et;
     private Button eom;
-
 
 
     @Override
@@ -38,28 +37,22 @@ public class MainActivity extends Activity {
         lv = (ListView) findViewById(R.id.OneMoreList);
         et=(EditText)findViewById(R.id.edit_om);
         eom=(Button)findViewById(R.id.add_button);
-        list=new ArrayList<String>();
 
-       eom.setOnClickListener(new Button.OnClickListener(){
+
+        eom.setOnClickListener(new Button.OnClickListener(){
             public void onClick(View v){
                 String s=et.getText().toString();
-                list.add("One More "+s);
+                String skree="One More "+s;
+                aa.add(skree);
                 aa.notifyDataSetChanged();
             }
         });
 
-
-        final String[] listArray=new String[list.size()];
-        list.toArray(listArray);
-
-
-
-
         class MySimpleArrayAdapter extends ArrayAdapter<String> {
             private final Context context;
 
-            public MySimpleArrayAdapter(Context context, String[] values) {
-                super(context, R.layout.one_more_list, values);
+            public MySimpleArrayAdapter(Context context, ArrayList<String> list) {
+                super(context, R.layout.one_more_list, list);
                 this.context = context;
             }
 
@@ -70,35 +63,36 @@ public class MainActivity extends Activity {
                 View view = inflater.inflate(R.layout.one_more_list, parent, false);
                 TextView tvtext = (TextView) view.findViewById(R.id.layout_text);
                 TextView tvcount = (TextView) view.findViewById(R.id.layout_count);
-                tvtext.setText(listArray[position]);
-                tvcount.setText(0);
+                final String[] listarray=new String[list.size()];
+                list.toArray(listarray);
+                tvtext.setText(listarray[position]);
+                Number n=0;
+                String ns=n.toString();
+                tvcount.setText(ns);
                 return view;
             }
         }
 
-        aa = new MySimpleArrayAdapter(this, listArray);
+
+
+        aa = new MySimpleArrayAdapter(MainActivity.this, list);
+
+
 
         lv.setAdapter(aa);
 
-/*
-        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Object obj=listArray[position];
-                int x=Integer.getInteger(obj.toString());
-
-
-            }
-        });
-*/
     }
-    /*
 
+
+/*
     private void addOneMore(View view){
         String s=et.getText().toString();
-        list.add("One More "+s);
+        String onemore=("One MOre "+s);
+        aa.add(onemore);
+        aa.notifyDataSetChanged();
     }
-*/
+    */
+
 
 
     @Override
