@@ -29,7 +29,6 @@
     <ListView
        android:id="@+id/OneMoreList"
        android:padding="10dp"
-       android:background="@color/Goldenrod"
        android:layout_width="fill_parent"
        android:layout_height="fill_parent">
        </ListView>
