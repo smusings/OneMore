@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.view.GestureDetectorCompat;
 import android.view.GestureDetector;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -29,6 +30,9 @@ public class MainActivity extends Activity {
     private ListView lv;
     private EditText et;
     private Button eom;
+    private GestureDetectorCompat GDC;
+    GestureDetector gt;
+
 
 
     @Override
@@ -40,6 +44,8 @@ public class MainActivity extends Activity {
         lv = (ListView) findViewById(R.id.OneMoreList);
         et=(EditText)findViewById(R.id.edit_om);
         eom=(Button)findViewById(R.id.add_button);
+
+        gt=new GestureDetector(this, (GestureDetector.OnGestureListener) new GestureListener());
 
 
 
@@ -76,27 +82,45 @@ public class MainActivity extends Activity {
                 tv2.setText(skr);
             }
         });
-
-        //onSwipe Gesture i need
-        final GestureDetector gesture=new GestureDetector(this,
-                new GestureDetector.SimpleOnGestureListener() {
-                    @Override
-                    public boolean onFling(MotionEvent e1, MotionEvent e2,
-                                           float velocityX, float velocityY) {
-                        float sensitvity = 50;
-                        //right to left
-                        if ((e1.getX() - e2.getX()) > sensitvity) {
-                            //something else
-                        }
-                        //left to right
-                        else if ((e2.getX() - e1.getX()) > sensitvity) {
-                           //delete button
-                        }
-                        return super.onFling(e1, e2, velocityX, velocityY);
-                    }
-
-                });
+/*
+        lv.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                gt.onTouchEvent(event);
+                return true;
+            }
+        });
+        */
     }
+
+    private static final int SWIPE_MIN_DISTANCE = 120;
+    private static final int SWIPE_THRESHOLD_VELOCITY = 200;
+
+    private class GestureListener extends GestureDetector.SimpleOnGestureListener {
+        @Override
+        public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+            //right to left
+            if(e1.getX() - e2.getX() > SWIPE_MIN_DISTANCE && Math.abs(velocityX) > SWIPE_THRESHOLD_VELOCITY) {
+                TextView tv2=(TextView)findViewById(R.id.layout_count);
+                String value=tv2.getText().toString();
+                int n=Integer.valueOf(value);
+                int nz=n+1;
+                String skr=Integer.toString(nz);
+                tv2.setText(skr);
+            }
+            //left to right
+            else if (e2.getX() - e1.getX() > SWIPE_MIN_DISTANCE && Math.abs(velocityX) > SWIPE_THRESHOLD_VELOCITY) {
+                TextView tv2=(TextView)findViewById(R.id.layout_count);
+                String value=tv2.getText().toString();
+                int n=Integer.valueOf(value);
+                int nz=n+1;
+                String skr=Integer.toString(nz);
+                tv2.setText(skr);
+            }
+            return false;
+        }
+    }
+
 
     //in place to make sure data isn't cleared on orientation change
     @Override
@@ -120,7 +144,6 @@ public class MainActivity extends Activity {
         }
     }
 
-
     //sets up menu
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -142,4 +165,6 @@ public class MainActivity extends Activity {
         }
         return super.onOptionsItemSelected(item);
     }
+
 }
+
