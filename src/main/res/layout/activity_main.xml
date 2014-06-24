@@ -2,34 +2,36 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:configChanges="orientation|screenSize"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context=".MainActivity"
-    android:configChanges="orientation|screenSize"
-    android:orientation="vertical">
+    tools:context=".MainActivity">
+
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
         <EditText
             android:id="@+id/edit_om"
-            android:hint="@string/one_more"
-            android:layout_weight="1"
             android:layout_width="0dp"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="@string/one_more" />
+
         <Button
             android:id="@+id/add_button"
-            android:text="@string/add"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:text="@string/add" />
     </LinearLayout>
 
     <ListView
-       android:id="@+id/OneMoreList"
-       android:padding="10dp"
-       android:layout_width="fill_parent"
-       android:layout_height="fill_parent">
-       </ListView>
+        android:id="@+id/OneMoreList"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:padding="10dp"></ListView>
 </LinearLayout>

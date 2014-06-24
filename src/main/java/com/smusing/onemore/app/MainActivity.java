@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.view.GestureDetectorCompat;
 import android.view.GestureDetector;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -23,17 +22,19 @@ import java.util.ArrayList;
 
 public class MainActivity extends Activity {
 
+
     //identify the elemts we are using
     private ArrayAdapter aa;
-    private ArrayList<String> list =new ArrayList<String>();
-    private ArrayList<Number> amount=new ArrayList<Number>();
+    private ArrayList<String> list = new ArrayList<String>();
+    private ArrayList<Number> amount = new ArrayList<Number>();
     private ListView lv;
     private EditText et;
     private Button eom;
-    private GestureDetectorCompat GDC;
+    private static final int SWIPE_MIN_DISTANCE = 120;
+    private static final int SWIPE_THRESHOLD_VELOCITY = 200;
+    private static final int SWIPE_MAX_OFF_PATH = 250;
     GestureDetector gt;
-
-
+    View.OnTouchListener gl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,11 +43,9 @@ public class MainActivity extends Activity {
 
         //assign values to the elements we are using
         lv = (ListView) findViewById(R.id.OneMoreList);
-        et=(EditText)findViewById(R.id.edit_om);
-        eom=(Button)findViewById(R.id.add_button);
-
-        gt=new GestureDetector(this, (GestureDetector.OnGestureListener) new GestureListener());
-
+        et = (EditText) findViewById(R.id.edit_om);
+        eom = (Button) findViewById(R.id.add_button);
+        gt = new GestureDetector(this, new MyGestureDetector());
 
 
         //onclick listener for the button to create a new OneMore
@@ -64,72 +63,48 @@ public class MainActivity extends Activity {
             }
         });
 
-
         //defines the adapter we are using and sets it.
         aa = new OneMoreArrayAdapter(MainActivity.this, list);
         lv.setAdapter(aa);
 
-
-
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-                TextView tv2=(TextView)view.findViewById(R.id.layout_count);
-                String value=tv2.getText().toString();
-                int n=Integer.valueOf(value);
-                int nz=n+1;
-                String skr=Integer.toString(nz);
+                TextView tv2 = (TextView) view.findViewById(R.id.layout_count);
+                String value = tv2.getText().toString();
+                int n = Integer.valueOf(value);
+                int nz = n + 1;
+                String skr = Integer.toString(nz);
                 tv2.setText(skr);
             }
         });
-/*
+
+        gl=new View.OnTouchListener(){
+            public boolean onTouch(View v, MotionEvent event){
+                return gt.onTouchEvent(event);
+            }
+        };
+
+        lv.setOnTouchListener(gl);
+
         lv.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                gt.onTouchEvent(event);
-                return true;
+                return gt.onTouchEvent(event);
             }
         });
-        */
+
+
     }
-
-    private static final int SWIPE_MIN_DISTANCE = 120;
-    private static final int SWIPE_THRESHOLD_VELOCITY = 200;
-
-    private class GestureListener extends GestureDetector.SimpleOnGestureListener {
-        @Override
-        public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
-            //right to left
-            if(e1.getX() - e2.getX() > SWIPE_MIN_DISTANCE && Math.abs(velocityX) > SWIPE_THRESHOLD_VELOCITY) {
-                TextView tv2=(TextView)findViewById(R.id.layout_count);
-                String value=tv2.getText().toString();
-                int n=Integer.valueOf(value);
-                int nz=n+1;
-                String skr=Integer.toString(nz);
-                tv2.setText(skr);
-            }
-            //left to right
-            else if (e2.getX() - e1.getX() > SWIPE_MIN_DISTANCE && Math.abs(velocityX) > SWIPE_THRESHOLD_VELOCITY) {
-                TextView tv2=(TextView)findViewById(R.id.layout_count);
-                String value=tv2.getText().toString();
-                int n=Integer.valueOf(value);
-                int nz=n+1;
-                String skr=Integer.toString(nz);
-                tv2.setText(skr);
-            }
-            return false;
-        }
-    }
-
 
     //in place to make sure data isn't cleared on orientation change
     @Override
-    protected void onResume(){
+    protected void onResume() {
         super.onResume();
         et.postDelayed(new Runnable() {
             @Override
             public void run() {
-                InputMethodManager imm = (InputMethodManager)getSystemService(
+                InputMethodManager imm = (InputMethodManager) getSystemService(
                         Context.INPUT_METHOD_SERVICE);
                 imm.hideSoftInputFromWindow(et.getWindowToken(), 0);
             }
@@ -137,9 +112,9 @@ public class MainActivity extends Activity {
     }
 
     //command to close keyboard
-    private void hideSoftKeyboard(){
-        if(getCurrentFocus()!=null && getCurrentFocus() instanceof EditText){
-            InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+    private void hideSoftKeyboard() {
+        if (getCurrentFocus() != null && getCurrentFocus() instanceof EditText) {
+            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(et.getWindowToken(), 0);
         }
     }
@@ -166,5 +141,32 @@ public class MainActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
+    class MyGestureDetector extends GestureDetector.SimpleOnGestureListener {
+        @Override
+        public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+            try {
+                if (Math.abs(e1.getY() - e2.getY()) > SWIPE_MAX_OFF_PATH)
+                    return false;
+                // right to left swipe
+                if (e1.getX() - e2.getX() > SWIPE_MIN_DISTANCE && Math.abs(velocityX) > SWIPE_THRESHOLD_VELOCITY) {
+                    aa.add("skree");
+                    aa.notifyDataSetChanged();
+                }
+                //left to right
+                else if (e2.getX() - e1.getX() > SWIPE_MIN_DISTANCE && Math.abs(velocityX) > SWIPE_THRESHOLD_VELOCITY) {
+                    aa.add("eekrs");
+                    aa.notifyDataSetChanged();
+                }
+            } catch (Exception e) {
+                // nothing
+            }
+            return false;
+        }
+
+        @Override
+        public boolean onDown(MotionEvent e) {
+            return true;
+        }
+    }
 }
 

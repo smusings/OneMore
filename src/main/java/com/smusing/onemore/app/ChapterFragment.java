@@ -20,7 +20,6 @@ public class ChapterFragment extends Fragment {
     private OmChapterListener omChapterListener;
 
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

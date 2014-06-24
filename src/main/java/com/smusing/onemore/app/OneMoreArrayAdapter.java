@@ -12,15 +12,13 @@ import java.util.ArrayList;
 class OneMoreArrayAdapter extends ArrayAdapter<String> {
     private final Context context;
     private ArrayList<String> list;
+    private int[] colors = new int[]{R.color.Goldenrod, R.color.Crimson, R.color.ForestGreen};
 
     public OneMoreArrayAdapter(Context context, ArrayList<String> list) {
         super(context, R.layout.one_more_list, list);
         this.context = context;
-        this.list=list;
+        this.list = list;
     }
-
-    private int[] colors=new int[]{R.color.Goldenrod, R.color.Crimson, R.color.ForestGreen};
-
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -31,16 +29,16 @@ class OneMoreArrayAdapter extends ArrayAdapter<String> {
         TextView tvtext = (TextView) view.findViewById(R.id.layout_text);
         TextView tvcount = (TextView) view.findViewById(R.id.layout_count);
 
-        int colorPos=position % colors.length;
+        int colorPos = position % colors.length;
         view.setBackgroundResource(colors[colorPos]);
 
-        final String[] listarray=new String[list.size()];
+        final String[] listarray = new String[list.size()];
         list.toArray(listarray);
 
 
         tvtext.setText(listarray[position]);
-        Number n=0;
-        String ns=n.toString();
+        Number n = 0;
+        String ns = n.toString();
         tvcount.setText(ns);
         return view;
     }
