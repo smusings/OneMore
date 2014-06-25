@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.GestureDetector;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -57,7 +58,6 @@ public class MainActivity extends Activity {
 
                 aa.add(skree);
                 //notification of the data being sent, wipes the text, and closes the keyboard.
-                aa.notifyDataSetChanged();
                 et.setText("");
                 hideSoftKeyboard();
             }
@@ -87,7 +87,7 @@ public class MainActivity extends Activity {
 
         lv.setOnTouchListener(gl);
 
-        lv.setOnTouchListener(new View.OnTouchListener() {
+        lv.setOnTouchListener(new AdapterView.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 return gt.onTouchEvent(event);
@@ -153,9 +153,18 @@ public class MainActivity extends Activity {
                     aa.notifyDataSetChanged();
                 }
                 //left to right
-                else if (e2.getX() - e1.getX() > SWIPE_MIN_DISTANCE && Math.abs(velocityX) > SWIPE_THRESHOLD_VELOCITY) {
-                    aa.add("eekrs");
-                    aa.notifyDataSetChanged();
+                else if (e2.getX() - e1.getX() > SWIPE_MIN_DISTANCE && Math.abs(velocityX) > SWIPE_THRESHOLD_VELOCITY){
+                    LayoutInflater inflater=(LayoutInflater)MainActivity.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                    View v=inflater.inflate(R.layout.one_more_list, MainActivity.this, true);
+
+                    View view=LayoutInflater.from(MainActivity.this).inflate(R.layout.one_more_list, null);
+
+                    TextView tv2 = (TextView) view.findViewById(R.id.layout_count);
+                    String value = tv2.getText().toString();
+                    int n = Integer.valueOf(value);
+                    int nz = n - 1;
+                    String skr = Integer.toString(nz);
+                    tv2.setText(skr);
                 }
             } catch (Exception e) {
                 // nothing
