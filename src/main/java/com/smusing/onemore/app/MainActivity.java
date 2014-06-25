@@ -17,6 +17,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -76,16 +77,10 @@ public class MainActivity extends Activity {
                 int nz = n + 1;
                 String skr = Integer.toString(nz);
                 tv2.setText(skr);
+                Toast.makeText(MainActivity.this, "Right Swipe", Toast.LENGTH_SHORT).show();
             }
         });
 
-        gl=new View.OnTouchListener(){
-            public boolean onTouch(View v, MotionEvent event){
-                return gt.onTouchEvent(event);
-            }
-        };
-
-        lv.setOnTouchListener(gl);
 
         lv.setOnTouchListener(new AdapterView.OnTouchListener() {
             @Override
@@ -154,17 +149,14 @@ public class MainActivity extends Activity {
                 }
                 //left to right
                 else if (e2.getX() - e1.getX() > SWIPE_MIN_DISTANCE && Math.abs(velocityX) > SWIPE_THRESHOLD_VELOCITY){
-                    LayoutInflater inflater=(LayoutInflater)MainActivity.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                    View v=inflater.inflate(R.layout.one_more_list, MainActivity.this, true);
-
                     View view=LayoutInflater.from(MainActivity.this).inflate(R.layout.one_more_list, null);
-
                     TextView tv2 = (TextView) view.findViewById(R.id.layout_count);
                     String value = tv2.getText().toString();
                     int n = Integer.valueOf(value);
                     int nz = n - 1;
                     String skr = Integer.toString(nz);
                     tv2.setText(skr);
+
                 }
             } catch (Exception e) {
                 // nothing
