@@ -77,7 +77,6 @@ public class MainActivity extends Activity {
                 int nz = n + 1;
                 String skr = Integer.toString(nz);
                 tv2.setText(skr);
-                Toast.makeText(MainActivity.this, "Right Swipe", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -139,23 +138,33 @@ public class MainActivity extends Activity {
     class MyGestureDetector extends GestureDetector.SimpleOnGestureListener {
         @Override
         public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+            int pos = lv.pointToPosition((int)e1.getX(), (int)e1.getY());
+            LayoutInflater inflator=MainActivity.this.getLayoutInflater();
+            final String[] listarray = new String[list.size()];
+            list.toArray(listarray);
+
             try {
                 if (Math.abs(e1.getY() - e2.getY()) > SWIPE_MAX_OFF_PATH)
                     return false;
                 // right to left swipe
                 if (e1.getX() - e2.getX() > SWIPE_MIN_DISTANCE && Math.abs(velocityX) > SWIPE_THRESHOLD_VELOCITY) {
-                    aa.add("skree");
+                    //deletes shit
+                    aa.remove(listarray[pos]);
                     aa.notifyDataSetChanged();
                 }
                 //left to right
                 else if (e2.getX() - e1.getX() > SWIPE_MIN_DISTANCE && Math.abs(velocityX) > SWIPE_THRESHOLD_VELOCITY){
-                    View view=LayoutInflater.from(MainActivity.this).inflate(R.layout.one_more_list, null);
+
+                    final View view = inflator.inflate(R.layout.one_more_list, null);
                     TextView tv2 = (TextView) view.findViewById(R.id.layout_count);
                     String value = tv2.getText().toString();
                     int n = Integer.valueOf(value);
                     int nz = n - 1;
                     String skr = Integer.toString(nz);
                     tv2.setText(skr);
+
+                    //test to see if swipe works
+                    Toast.makeText(MainActivity.this, "Right Swipe", Toast.LENGTH_SHORT).show();
 
                 }
             } catch (Exception e) {
