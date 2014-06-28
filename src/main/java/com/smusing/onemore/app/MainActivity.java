@@ -32,8 +32,8 @@ public class MainActivity extends Activity {
     private ListView lv;
     private EditText et;
     private Button eom;
-    private static final int SWIPE_MIN_DISTANCE = 120;
-    private static final int SWIPE_THRESHOLD_VELOCITY = 200;
+    private static final int SWIPE_MIN_DISTANCE = 50;
+    private static final int SWIPE_THRESHOLD_VELOCITY = 50;
     private static final int SWIPE_MAX_OFF_PATH = 250;
     GestureDetector gt;
     View.OnTouchListener gl;
@@ -51,23 +51,11 @@ public class MainActivity extends Activity {
 
 
         //onclick listener for the button to create a new OneMore
-        eom.setOnClickListener(new Button.OnClickListener() {
-            public void onClick(View v) {
-                String s = et.getText().toString();
-                String skree = "One More " + s;
-                Number n = 0;
-
-                aa.add(skree);
-                //notification of the data being sent, wipes the text, and closes the keyboard.
-                et.setText("");
-                hideSoftKeyboard();
-            }
-        });
 
         //defines the adapter we are using and sets it.
         aa = new OneMoreArrayAdapter(MainActivity.this, list);
         lv.setAdapter(aa);
-
+/*
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
@@ -79,15 +67,28 @@ public class MainActivity extends Activity {
                 tv2.setText(skr);
             }
         });
-
-
+*/
         lv.setOnTouchListener(new AdapterView.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                return gt.onTouchEvent(event);
+
+                gt.onTouchEvent(event);
+                return true;
             }
         });
+    }
 
+    public void addOneMore(View view){
+        String s = et.getText().toString();
+        String skree = "One More " + s;
+        Number n = 0;
+
+        list.add(skree);
+        amount.add(n);
+        //notification of the data being sent, wipes the text, and closes the keyboard.
+        et.setText("");
+        hideSoftKeyboard();
+        aa.notifyDataSetChanged();
 
     }
 
@@ -135,11 +136,16 @@ public class MainActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
+    //gesture enabler
     class MyGestureDetector extends GestureDetector.SimpleOnGestureListener {
         @Override
         public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
             int pos = lv.pointToPosition((int)e1.getX(), (int)e1.getY());
-            LayoutInflater inflator=MainActivity.this.getLayoutInflater();
+
+            Context context=MainActivity.this;
+
+            LayoutInflater inflator=(LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
             final String[] listarray = new String[list.size()];
             list.toArray(listarray);
 
@@ -150,13 +156,14 @@ public class MainActivity extends Activity {
                 if (e1.getX() - e2.getX() > SWIPE_MIN_DISTANCE && Math.abs(velocityX) > SWIPE_THRESHOLD_VELOCITY) {
                     //deletes shit
                     aa.remove(listarray[pos]);
-                    aa.notifyDataSetChanged();
                 }
                 //left to right
                 else if (e2.getX() - e1.getX() > SWIPE_MIN_DISTANCE && Math.abs(velocityX) > SWIPE_THRESHOLD_VELOCITY){
 
-                    final View view = inflator.inflate(R.layout.one_more_list, null);
+                    View view = inflator.inflate(R.layout.one_more_list, null);
+
                     TextView tv2 = (TextView) view.findViewById(R.id.layout_count);
+
                     String value = tv2.getText().toString();
                     int n = Integer.valueOf(value);
                     int nz = n - 1;

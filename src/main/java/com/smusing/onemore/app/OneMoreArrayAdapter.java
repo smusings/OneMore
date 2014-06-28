@@ -12,12 +12,14 @@ import java.util.ArrayList;
 class OneMoreArrayAdapter extends ArrayAdapter<String> {
     private final Context context;
     private ArrayList<String> list;
+    private ArrayList<String> amount;
     private int[] colors = new int[]{R.color.Goldenrod, R.color.Crimson, R.color.ForestGreen};
 
     public OneMoreArrayAdapter(Context context, ArrayList<String> list) {
         super(context, R.layout.one_more_list, list);
         this.context = context;
         this.list = list;
+        this.amount=amount;
     }
 
     @Override
@@ -34,12 +36,13 @@ class OneMoreArrayAdapter extends ArrayAdapter<String> {
 
         final String[] listarray = new String[list.size()];
         list.toArray(listarray);
-
+        final String[] amountarray = new String[amount.size()];
+        amount.toArray(amountarray);
 
         tvtext.setText(listarray[position]);
         Number n = 0;
         String ns = n.toString();
-        tvcount.setText(ns);
+        tvcount.setText(amountarray[position]);
         return view;
     }
 }
