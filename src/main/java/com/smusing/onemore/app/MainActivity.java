@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.GestureDetector;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -17,7 +16,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -28,7 +26,7 @@ public class MainActivity extends Activity {
     //identify the elemts we are using
     private ArrayAdapter aa;
     private ArrayList<String> list = new ArrayList<String>();
-    private ArrayList<Number> amount = new ArrayList<Number>();
+    private ArrayList<String> amount = new ArrayList<String>();
     private ListView lv;
     private EditText et;
     private Button eom;
@@ -49,39 +47,27 @@ public class MainActivity extends Activity {
         eom = (Button) findViewById(R.id.add_button);
         gt = new GestureDetector(this, new MyGestureDetector());
 
-
-        //onclick listener for the button to create a new OneMore
-        eom.setOnClickListener(new Button.OnClickListener() {
-            public void onClick(View v) {
-                String s = et.getText().toString();
-                String skree = "One More " + s;
-                Number n = 0;
-
-                aa.add(skree);
-                //notification of the data being sent, wipes the text, and closes the keyboard.
-                et.setText("");
-                hideSoftKeyboard();
-            }
-        });
-
         //defines the adapter we are using and sets it.
-        aa = new OneMoreArrayAdapter(MainActivity.this, list);
+        aa = new OneMoreArrayAdapter(MainActivity.this, list, amount);
         lv.setAdapter(aa);
 
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
 
-                TextView tv2 = (TextView)findViewById(R.id.layout_count);
-                String value = tv2.getText().toString();
+                final String[] amountarray = new String[amount.size()];
+                amount.toArray(amountarray);
+
+                TextView tv2 = (TextView) view.findViewById(R.id.layout_count);
+                Object obj=amountarray[position];
+
+                String value = obj.toString();
                 int n = Integer.valueOf(value);
                 int nz = n + 1;
                 String skr = Integer.toString(nz);
                 tv2.setText(skr);
             }
         });
-
-
 
         lv.setOnTouchListener(new AdapterView.OnTouchListener() {
             @Override
@@ -90,6 +76,22 @@ public class MainActivity extends Activity {
             }
         });
 
+    }
+
+
+
+
+    public void addOneMore(View view){
+        String s = et.getText().toString();
+        String skree = "One More " + s;
+        Number n = 0;
+
+        list.add(skree);
+        amount.add(n.toString());
+        //notification of the data being sent, wipes the text, and closes the keyboard.
+        et.setText("");
+        hideSoftKeyboard();
+        aa.notifyDataSetChanged();
 
     }
 
@@ -142,7 +144,6 @@ public class MainActivity extends Activity {
         @Override
         public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
             int pos = lv.pointToPosition((int)e1.getX(), (int)e1.getY());
-            LayoutInflater inflator=MainActivity.this.getLayoutInflater();
             final String[] listarray = new String[list.size()];
             list.toArray(listarray);
 
@@ -161,17 +162,30 @@ public class MainActivity extends Activity {
                 else if (e2.getX() - e1.getX() > SWIPE_MIN_DISTANCE && Math.abs(velocityX) > SWIPE_THRESHOLD_VELOCITY){
 
 
-                    final View view = inflator.inflate(R.layout.one_more_list, null);
-                    TextView tv2 = (TextView) view.findViewById(R.id.layout_count);
-                    String value = tv2.getText().toString();
+                    final String[] amountarray = new String[amount.size()];
+                    amount.toArray(amountarray);
+
+                    //try this?!
+                    Object obj=amountarray[pos];
+                    TextView tv2 = (TextView)findViewById(R.id.layout_count);
+                    String value = obj.toString();
                     int n = Integer.valueOf(value);
                     int nz = n - 1;
                     String skr = Integer.toString(nz);
                     tv2.setText(skr);
 
+                    /*
+                    TextView tv2 = (TextView)findViewById(R.id.layout_count);
+                    String value = tv2.getText().toString();
+                    int n = Integer.valueOf(value);
+                    int nz = n - 1;
+                    String skr = Integer.toString(nz);
+                    tv2.setText(skr);
+                    */
+
 
                     //test to see if swipe works
-                    Toast.makeText(MainActivity.this, "Right Swipe", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(MainActivity.this, "Right Swipe", Toast.LENGTH_SHORT).show();
 
                 }
             } catch (Exception e) {
@@ -185,4 +199,5 @@ public class MainActivity extends Activity {
             return true;
         }
     }
+
 }
