@@ -1,5 +1,6 @@
 package com.smusing.onemore.app;
 
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -10,6 +11,8 @@ import android.widget.ArrayAdapter;
 
 public class MainActivity extends FragmentActivity
 implements ChapterFragment.OmChapterListener{
+
+    FragmentTransaction ft=getFragmentManager().beginTransaction();
 
     @Override
     public void omchapter(Number n) {
@@ -33,6 +36,8 @@ implements ChapterFragment.OmChapterListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+
     }
 
     //sets up menu
@@ -53,6 +58,8 @@ implements ChapterFragment.OmChapterListener{
         if (id == R.id.action_about) {
             Intent intent = new Intent(this, About.class);
             startActivity(intent);
+
+
         }
         return super.onOptionsItemSelected(item);
     }

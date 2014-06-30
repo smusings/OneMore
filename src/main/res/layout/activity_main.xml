@@ -20,4 +20,9 @@
         android:textSize="30dp"
         android:gravity="center"/>
 
+    <fragment
+        android:name="com.smusing.onemore.app.ChapterFragment"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"/>
+
 </LinearLayout>

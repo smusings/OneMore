@@ -32,9 +32,9 @@ public class ChapterFragment extends Fragment {
         ini = nul.toString();
 
         //setup to use
-        chaptertext = (TextView) view.findViewById(R.id.chapter_text);
-        TextView chaptercount = (TextView) view.findViewById(R.id.fragment_count);
-        chaptertext.setText(R.string.chapters);
+
+        final TextView chaptertext = (TextView) view.findViewById(R.id.chapter_text);
+        final TextView chaptercount = (TextView) view.findViewById(R.id.chapter_count);
         chaptercount.setText(ini);
 
 
@@ -50,12 +50,21 @@ public class ChapterFragment extends Fragment {
                         //right to left
                         if ((e1.getX() - e2.getX()) > sensitvity) {
                             Number n=-1;
+                            int nn=-1;
+                            String value = chaptercount.getText().toString();
+                            int intvalue=Integer.parseInt(value);
+                            int amount=intvalue+nn;
+                            chaptercount.setText(Integer.toString(amount));
+
                             omChapterListener.omchapter(n);
                         }
                         //left to right
                         else if ((e2.getX() - e1.getX()) > sensitvity) {
-                            Number n=1;
+                            Number n=0;
+                            String reset=n.toString();
+                            chaptercount.setText(reset);
                             omChapterListener.omchapter(n);
+
                         }
                         return super.onFling(e1, e2, velocityX, velocityY);
                     }
@@ -63,6 +72,7 @@ public class ChapterFragment extends Fragment {
 
 
         //i want to use this eventualy hold and delete things
+
         chaptertext.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
@@ -70,10 +80,16 @@ public class ChapterFragment extends Fragment {
             }
         });
 
+
         chaptertext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Number n = 1;
+                Number n=1;
+                int nn=1;
+                String value = chaptercount.getText().toString();
+                int intvalue=Integer.parseInt(value);
+                int amount=intvalue+nn;
+                chaptercount.setText(Integer.toString(amount));
                 omChapterListener.omchapter(n);
             }
         });
@@ -94,7 +110,7 @@ public class ChapterFragment extends Fragment {
     }
 
     public void doSomething(String s) {
-        TextView chaptercount = (TextView) getView().findViewById(R.id.fragment_count);
+        TextView chaptercount = (TextView) getView().findViewById(R.id.chapter_count);
         chaptercount.setText(s);
     }
 
