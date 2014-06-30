@@ -2,31 +2,27 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="horizontal">
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:background="@color/White">
 
     <TextView
-        android:id="@+id/chapter_text"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/White"
+        android:textSize="15dp"
+        android:text="Chapter"
+        android:layout_margin="10dp"
+        android:background="@color/ForestGreen"/>
+    <TextView
+        android:id="@+id/chapter_count"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:gravity="center"
+        android:text="0"
         android:textColor="@color/White"
-        android:textSize="15dp" />
-
-    <LinearLayout
-        android:id="@+id/chapterfragment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:id="@+id/fragment_count"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="0"
-            android:textColor="@color/White"
-            android:textSize="32dp" />
-    </LinearLayout>
+        android:textSize="15dp"
+        android:layout_margin="10dp"
+        android:background="@color/ForestGreen"/>
 
 </LinearLayout>

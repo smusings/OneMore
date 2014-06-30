@@ -4,7 +4,9 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.GestureDetectorCompat;
+import android.view.GestureDetector;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -37,7 +39,6 @@ public class ChapterFragment extends Fragment {
 
 
 
-        /*
 
         //onSwipe Gesture i need
         final GestureDetector gesture=new GestureDetector(getActivity(),
@@ -59,7 +60,7 @@ public class ChapterFragment extends Fragment {
                         return super.onFling(e1, e2, velocityX, velocityY);
                     }
                 });
-                */
+
 
         //i want to use this eventualy hold and delete things
         chaptertext.setOnLongClickListener(new View.OnLongClickListener() {
@@ -79,7 +80,7 @@ public class ChapterFragment extends Fragment {
 
 
 
-        /*
+
 
         //this SHOULD send what I need across
         chaptertext.setOnTouchListener(new View.OnTouchListener() {
@@ -88,7 +89,6 @@ public class ChapterFragment extends Fragment {
                 return gesture.onTouchEvent(event);
             }
         });
-        */
 
         return view;
     }
