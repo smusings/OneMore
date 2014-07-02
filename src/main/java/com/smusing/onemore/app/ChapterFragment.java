@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-public class ChapterFragment extends Fragment {
+public class ChapterFragment extends Fragment{
 
     //in case i want to do it differently
     private static final String DEBUG_TAG = "Gestures";
@@ -50,6 +50,7 @@ public class ChapterFragment extends Fragment {
         });
 
 
+
         //onSwipe Gesture i need
         final GestureDetector gesture = new GestureDetector(getActivity(),
                 new GestureDetector.SimpleOnGestureListener() {
@@ -68,7 +69,7 @@ public class ChapterFragment extends Fragment {
                         }
                         //left to right
                         else if ((e2.getX() - e1.getX()) > sensitvity) {
-                            new OneMoreDialogue().show(getFragmentManager(), "fragmentDialog");
+                            new OneMoreDialogue().show(getChildFragmentManager(), "fragmentDialog");
                         }
                         return super.onFling(e1, e2, velocityX, velocityY);
                     }
@@ -96,5 +97,11 @@ public class ChapterFragment extends Fragment {
 
         return view;
     }
+
+    private void doPositiveClick(){
+
+    }
+
+
 
 }
