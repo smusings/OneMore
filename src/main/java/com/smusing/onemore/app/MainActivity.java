@@ -1,6 +1,5 @@
 package com.smusing.onemore.app;
 
-import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -10,22 +9,7 @@ import android.widget.ArrayAdapter;
 
 
 public class MainActivity extends FragmentActivity
-implements ChapterFragment.OmChapterListener{
-
-    FragmentTransaction ft=getFragmentManager().beginTransaction();
-
-    @Override
-    public void omchapter(Number n) {
-
-        //going to use bundles to send data to fragment and work on the edittext there, should work?!
-
-        int nz=Integer.valueOf(n.intValue());
-        if (nz == 1){
-
-        } else if (nz == -1) {
-
-        }
-    }
+{
 
 
     //identify the elemts we are using
