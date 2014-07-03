@@ -1,8 +1,11 @@
 package com.smusing.onemore.app;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import android.support.v4.app.DialogFragment;
 import android.view.GestureDetector;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -10,7 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-public class ChapterFragment extends Fragment{
+public class ChapterFragment extends DialogFragment{
 
     //in case i want to do it differently
     private static final String DEBUG_TAG = "Gestures";
@@ -21,7 +24,7 @@ public class ChapterFragment extends Fragment{
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+                             final Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.chapter_fragment, container, false);
 
@@ -29,15 +32,11 @@ public class ChapterFragment extends Fragment{
         ini = nul.toString();
 
 
-
         //setup to use
 
         final TextView chaptertext = (TextView) view.findViewById(R.id.chapter_text);
         final TextView chaptercount = (TextView) view.findViewById(R.id.chapter_count);
         chaptercount.setText(ini);
-
-
-
 
 
         //i want to use this eventualy hold and delete things
@@ -49,6 +48,22 @@ public class ChapterFragment extends Fragment{
             }
         });
 
+        class OneMoreDialogue extends DialogFragment {
+            @Override
+            public Dialog onCreateDialog(Bundle savedInstanceState) {
+
+                return new AlertDialog.Builder(getActivity())
+                        .setMessage("Are you sure?")
+                        .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                ((ChapterFragment)getParentFragment()).doPositiveClick();
+
+                            }
+                        })
+                        .setNegativeButton("No way", null).create();
+            }
+        }
 
 
         //onSwipe Gesture i need
@@ -69,12 +84,18 @@ public class ChapterFragment extends Fragment{
                         }
                         //left to right
                         else if ((e2.getX() - e1.getX()) > sensitvity) {
-                            new OneMoreDialogue().show(getChildFragmentManager(), "fragmentDialog");
+                            if (savedInstanceState == null){
+                                new OneMoreDialogue().show(getChildFragmentManager(), "fragmentDialog");
+
+                            }else {
+                                new OneMoreDialogue().show(getChildFragmentManager(), "fragmentDialog");
+                            }
                         }
                         return super.onFling(e1, e2, velocityX, velocityY);
                     }
+
                     @Override
-                public boolean onSingleTapUp(MotionEvent e){
+                    public boolean onSingleTapUp(MotionEvent e) {
                         Number n = 1;
                         int nn = 1;
                         String value = chaptercount.getText().toString();
@@ -94,6 +115,10 @@ public class ChapterFragment extends Fragment{
                 return gesture.onTouchEvent(event);
             }
         });
+
+
+
+
 
         return view;
     }
