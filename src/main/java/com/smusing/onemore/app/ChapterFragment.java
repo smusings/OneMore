@@ -98,7 +98,12 @@ public class ChapterFragment extends Fragment{
         return view;
     }
 
-    private void doPositiveClick(){
+    public void doPositiveClick(){
+
+        final TextView chaptercount = (TextView) getView().findViewById(R.id.chapter_count);
+        Number n=0;
+        chaptercount.setText(n.toString());
+
 
     }
 
