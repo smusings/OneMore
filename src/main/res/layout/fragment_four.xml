@@ -4,31 +4,27 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:background="@color/DarkCyan">
+    android:background="@color/Green">
     <LinearLayout
-        android:id="@+id/chapter_layout"
+        android:id="@+id/fragment_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
         <TextView
-        android:id="@+id/chapter_text"
-        android:layout_weight="1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/White"
-        android:textSize="20dp"
-        android:text="Chapter"
-        android:gravity="center"/>
+            android:id="@+id/fragment_text"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/White"
+            android:textSize="20dp"
+            android:text="4"
+            android:gravity="center"/>
         <TextView
-            android:id="@+id/chapter_count"
+            android:id="@+id/fragment_count"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/White"
             android:textSize="30dp"
-            android:text="0"
             android:gravity="center"/>
     </LinearLayout>
-
-
-
 </LinearLayout>

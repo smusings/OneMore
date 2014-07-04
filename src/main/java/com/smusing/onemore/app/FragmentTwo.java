@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class PageFragment extends Fragment{
+public class FragmentTwo extends Fragment{
 
     //in case i want to do it differently
     private static final String DEBUG_TAG = "Gestures";
@@ -24,7 +24,7 @@ public class PageFragment extends Fragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.page_fragment, container, false);
+        View view = inflater.inflate(R.layout.fragment_two, container, false);
 
         nul = 0;
         ini = nul.toString();

@@ -37,11 +37,23 @@ public class OneMoreDialogue extends DialogFragment {
                         Log.d(DEBUG_PAGE, "which is: "+which);
                         switch (mNum){
                             case 1:
-                                ((ChapterFragment)getParentFragment()).doPositiveClick();
+                                ((FragmentOne)getParentFragment()).doPositiveClick();
                                 break;
 
                             case 2:
-                                ((PageFragment)getParentFragment()).doPositiveClick();
+                                ((FragmentTwo)getParentFragment()).doPositiveClick();
+                                break;
+                            case 3:
+                                ((FragmentThree)getParentFragment()).doPositiveClick();
+                                break;
+                            case 4:
+                                ((FragmentFour)getParentFragment()).doPositiveClick();
+                                break;
+                            case 5:
+                                ((FragmentFive)getParentFragment()).doPositiveClick();
+                                break;
+                            case 6:
+                                ((FragmentSix)getParentFragment()).doPositiveClick();
                                 break;
 
                         }

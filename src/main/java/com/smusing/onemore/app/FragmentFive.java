@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class ChapterFragment extends Fragment{
+public class FragmentFive extends Fragment{
 
     //in case i want to do it differently
     private static final String DEBUG_TAG = "Gestures";
@@ -24,7 +24,7 @@ public class ChapterFragment extends Fragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.chapter_fragment, container, false);
+        View view = inflater.inflate(R.layout.fragment_five, container, false);
 
         nul = 0;
         ini = nul.toString();
@@ -33,9 +33,9 @@ public class ChapterFragment extends Fragment{
 
         //setup to use
 
-        final TextView chaptertext = (TextView) view.findViewById(R.id.chapter_text);
-        final TextView chaptercount = (TextView) view.findViewById(R.id.chapter_count);
-        final LinearLayout ll=(LinearLayout)view.findViewById(R.id.chapter_layout);
+        final TextView chaptertext = (TextView) view.findViewById(R.id.fragment_text);
+        final TextView chaptercount = (TextView) view.findViewById(R.id.fragment_count);
+        final LinearLayout ll=(LinearLayout)view.findViewById(R.id.fragment_layout);
         chaptercount.setText(ini);
 
 
@@ -71,7 +71,7 @@ public class ChapterFragment extends Fragment{
                         }
                         //left to right
                         else if ((e2.getX() - e1.getX()) > sensitvity) {
-                            OneMoreDialogue newF=OneMoreDialogue.newInstance(1);
+                            OneMoreDialogue newF=OneMoreDialogue.newInstance(5);
                             newF.show(getChildFragmentManager(), "fragmentDialog");
                         }
                         return super.onFling(e1, e2, velocityX, velocityY);
@@ -103,7 +103,7 @@ public class ChapterFragment extends Fragment{
 
     public void doPositiveClick(){
 
-        final TextView chaptercount = (TextView) getView().findViewById(R.id.chapter_count);
+        final TextView chaptercount = (TextView) getView().findViewById(R.id.fragment_count);
         Number n=0;
         chaptercount.setText(n.toString());
 
