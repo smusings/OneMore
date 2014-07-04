@@ -6,22 +6,22 @@
     android:orientation="vertical"
     android:background="@color/White">
     <LinearLayout
-        android:id="@+id/chapter_layout"
+        android:id="@+id/page_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical">
         <TextView
-        android:id="@+id/chapter_text"
-        android:layout_weight="1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/White"
-        android:textSize="20dp"
-        android:text="Chapter"
-        android:gravity="center"
-        android:background="@color/ForestGreen"/>
+            android:id="@+id/page_text"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/White"
+            android:textSize="20dp"
+            android:text="Page"
+            android:gravity="center"
+            android:background="@color/ForestGreen"/>
         <TextView
-            android:id="@+id/chapter_count"
+            android:id="@+id/page_count"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/White"

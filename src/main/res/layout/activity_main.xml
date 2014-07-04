@@ -24,5 +24,9 @@
         android:name="com.smusing.onemore.app.ChapterFragment"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"/>
+    <fragment
+        android:name="com.smusing.onemore.app.PageFragment"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"/>
 
 </LinearLayout>
