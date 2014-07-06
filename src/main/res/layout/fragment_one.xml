@@ -2,30 +2,31 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/CadetBlue">
     <LinearLayout
         android:id="@+id/fragment_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="fill_parent"
         android:orientation="vertical">
         <TextView
-        android:id="@+id/fragment_text"
-        android:layout_weight="1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/White"
-        android:textSize="20dp"
-        android:text="1"
-        android:gravity="center"/>
+            android:id="@+id/fragment_text"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColor="@color/White"
+            android:textSize="20dp"
+            android:text="1"
+            android:gravity="center"/>
         <TextView
             android:id="@+id/fragment_count"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/White"
             android:textSize="30dp"
-            android:gravity="center"/>
+            android:gravity="center"
+            android:text="0"/>
     </LinearLayout>
 
 
