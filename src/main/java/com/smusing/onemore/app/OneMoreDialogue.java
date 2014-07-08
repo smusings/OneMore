@@ -39,7 +39,6 @@ public class OneMoreDialogue extends DialogFragment {
                             case 1:
                                 ((FragmentOne)getParentFragment()).doPositiveClick();
                                 break;
-
                             case 2:
                                 ((FragmentTwo)getParentFragment()).doPositiveClick();
                                 break;

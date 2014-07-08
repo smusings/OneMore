@@ -47,7 +47,9 @@ public class FragmentOne extends Fragment{
         ll.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                return false;
+                ChangeTextDialog newF=ChangeTextDialog.newInstance(1);
+                newF.show(getChildFragmentManager(), "fragmentDialog");
+                return true;
             }
         });
 
@@ -86,11 +88,9 @@ public class FragmentOne extends Fragment{
                         chaptercount.setText(Integer.toString(amount));
 
                         return true;
-
                     }
                 }
         );
-
         ll.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -106,7 +106,13 @@ public class FragmentOne extends Fragment{
         final TextView chaptercount = (TextView) getView().findViewById(R.id.fragment_count);
         Number n=0;
         chaptercount.setText(n.toString());
+    }
 
+    public void setSubject(){
 
+        final TextView onetext = (TextView) getView().findViewById(R.id.fragment_text);
+        //Bundle b=getArguments();
+        String s=getArguments().getString("subject");
+        onetext.setText(s);
     }
 }

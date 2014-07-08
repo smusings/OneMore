@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.EditText;
 
 
@@ -25,17 +24,47 @@ public class ChangeTextDialog extends DialogFragment {
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState){
+
+
+        final int mNum=getArguments().getInt("num");
+
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         final LayoutInflater inflater = getActivity().getLayoutInflater();
+        final View v=inflater.inflate(R.layout.change_thing_dialog, null);
 
-
-
-        builder.setView(inflater.inflate(R.layout.change_thing_dialog, null))
+        builder.setView(v)
                 .setPositiveButton("Enter", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        EditText et = (EditText)getView().findViewById(R.id.subject);
-                        String subject=et.getText().toString();
+                        EditText et = (EditText) v.findViewById(R.id.subject);
+                        String subject = et.getText().toString();
+
+                        Bundle bundle = new Bundle();
+                        bundle.putString("subject", subject);
+
+
+                        switch (mNum) {
+                            case 1:
+                                FragmentOne f = new FragmentOne();
+                                f.setArguments(bundle);
+                                ((FragmentOne) getParentFragment()).setSubject();
+                                break;
+                            case 2:
+                                ((FragmentTwo) getParentFragment()).doPositiveClick();
+                                break;
+                            case 3:
+                                ((FragmentThree) getParentFragment()).doPositiveClick();
+                                break;
+                            case 4:
+                                ((FragmentFour) getParentFragment()).doPositiveClick();
+                                break;
+                            case 5:
+                                ((FragmentFive) getParentFragment()).doPositiveClick();
+                                break;
+                            case 6:
+                                ((FragmentSix) getParentFragment()).doPositiveClick();
+                                break;
+                        }
 
                     }
                 })
@@ -48,15 +77,5 @@ public class ChangeTextDialog extends DialogFragment {
 
         return builder.create();
 
-    }
-
-
-    public View onCreateView(LayoutInflater inflater, ViewGroup contianer, Bundle savedInstanceState){
-        View view=inflater.inflate(R.layout.change_thing_dialog, contianer, false);
-
-        EditText et=(EditText)view.findViewById(R.id.subject);
-
-
-        return view;
     }
 }
