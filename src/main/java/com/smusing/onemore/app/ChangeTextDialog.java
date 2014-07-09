@@ -43,12 +43,14 @@ public class ChangeTextDialog extends DialogFragment {
                         bundle.putString("subject", subject);
 
 
-                        switch (mNum) {
+                        switch (mNum) {/*
                             case 1:
                                 FragmentOne f = new FragmentOne();
                                 f.setArguments(bundle);
+
                                 ((FragmentOne) getParentFragment()).setSubject();
                                 break;
+                            *//*
                             case 2:
                                 ((FragmentTwo) getParentFragment()).doPositiveClick();
                                 break;
@@ -64,6 +66,7 @@ public class ChangeTextDialog extends DialogFragment {
                             case 6:
                                 ((FragmentSix) getParentFragment()).doPositiveClick();
                                 break;
+                                */
                         }
 
                     }

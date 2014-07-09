@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -33,11 +34,13 @@ public class FragmentOne extends Fragment{
 
         //setup to use
 
-        final TextView chaptertext = (TextView) view.findViewById(R.id.fragment_text);
+        final EditText frag_text = (EditText) view.findViewById(R.id.fragment_text);
         final TextView chaptercount = (TextView) view.findViewById(R.id.fragment_count);
         final LinearLayout ll=(LinearLayout)view.findViewById(R.id.fragment_layout);
         chaptercount.setText(ini);
 
+
+        frag_text.setEnabled(false);
 
 
 
@@ -47,11 +50,12 @@ public class FragmentOne extends Fragment{
         ll.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                ChangeTextDialog newF=ChangeTextDialog.newInstance(1);
-                newF.show(getChildFragmentManager(), "fragmentDialog");
+                frag_text.setEnabled(true);
+                frag_text.setText("");
                 return true;
             }
         });
+
 
 
 
@@ -101,18 +105,15 @@ public class FragmentOne extends Fragment{
         return view;
     }
 
+    public String getBundleString(Bundle b){
+        String value=b.getString("subject");
+        return value;
+    }
+
     public void doPositiveClick(){
 
         final TextView chaptercount = (TextView) getView().findViewById(R.id.fragment_count);
         Number n=0;
         chaptercount.setText(n.toString());
-    }
-
-    public void setSubject(){
-
-        final TextView onetext = (TextView) getView().findViewById(R.id.fragment_text);
-        //Bundle b=getArguments();
-        String s=getArguments().getString("subject");
-        onetext.setText(s);
     }
 }
