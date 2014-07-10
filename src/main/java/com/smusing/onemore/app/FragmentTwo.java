@@ -39,17 +39,18 @@ public class FragmentTwo extends Fragment{
         pagecount.setText(ini);
 
 
-
-
-
-        //i want to use this eventualy hold and delete things
-
         ll.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
+                ChangeTextDialog newF=ChangeTextDialog.newInstance(2);
+                newF.show(getChildFragmentManager(), "fragmentDialog");
                 return false;
             }
         });
+
+
+
+
 
 
 
@@ -106,7 +107,17 @@ public class FragmentTwo extends Fragment{
         final TextView pagecount = (TextView) getView().findViewById(R.id.page_count);
         Number n=0;
         pagecount.setText(n.toString());
+    }
 
-
+    public void skree(){
+        final TextView pagetext = (TextView) getView().findViewById(R.id.page_text);
+        Bundle b=FragmentTwo.this.getArguments();
+        String s=b.getString("subject", null);
+        String t="default";
+        if (s != null){
+            pagetext.setText(s);
+        }else{
+            pagetext.setText(t);
+        }
     }
 }

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.GestureDetector;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -38,23 +39,29 @@ public class FragmentOne extends Fragment{
         final TextView chaptercount = (TextView) view.findViewById(R.id.fragment_count);
         final LinearLayout ll=(LinearLayout)view.findViewById(R.id.fragment_layout);
         chaptercount.setText(ini);
-
+        final KeyEvent event;
 
         frag_text.setEnabled(false);
-
-
-
-
-        //i want to use this eventualy hold and delete things
 
         ll.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
                 frag_text.setEnabled(true);
-                frag_text.setText("");
                 return true;
             }
         });
+
+        frag_text.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (event.getAction()==KeyEvent.KEYCODE_ENTER){
+                    frag_text.setEnabled(false);
+                }
+                return false;
+            }
+        });
+
+
 
 
 

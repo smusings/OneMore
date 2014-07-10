@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/White"
             android:textSize="20dp"
-            android:text="click to edit"
+            android:hint="click to edit"
             android:gravity="center"
             android:inputType="text"/>
         <TextView

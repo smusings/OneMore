@@ -8,6 +8,7 @@ import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 
 public class ChangeTextDialog extends DialogFragment {
@@ -39,21 +40,31 @@ public class ChangeTextDialog extends DialogFragment {
                         EditText et = (EditText) v.findViewById(R.id.subject);
                         String subject = et.getText().toString();
 
-                        Bundle bundle = new Bundle();
-                        bundle.putString("subject", subject);
 
 
-                        switch (mNum) {/*
+
+                        switch (mNum) {
                             case 1:
-                                FragmentOne f = new FragmentOne();
-                                f.setArguments(bundle);
+                                FragmentOne f1 = new FragmentOne();
+                                Bundle bundle = new Bundle();
+                                bundle.putString("subject", subject);
+                                f1.setArguments(bundle);
 
-                                ((FragmentOne) getParentFragment()).setSubject();
                                 break;
-                            *//*
+
                             case 2:
-                                ((FragmentTwo) getParentFragment()).doPositiveClick();
+                                FragmentTwo f2=new FragmentTwo();
+                                Bundle bundle2 = new Bundle();
+                                bundle2.putString("subject", subject);
+                                f2.setArguments(bundle2);
+
+                                Toast.makeText(getActivity(), subject, Toast.LENGTH_LONG).show();
+
+                                ((FragmentTwo) getParentFragment()).skree();
                                 break;
+
+
+
                             case 3:
                                 ((FragmentThree) getParentFragment()).doPositiveClick();
                                 break;
@@ -66,7 +77,6 @@ public class ChangeTextDialog extends DialogFragment {
                             case 6:
                                 ((FragmentSix) getParentFragment()).doPositiveClick();
                                 break;
-                                */
                         }
 
                     }
