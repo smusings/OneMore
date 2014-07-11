@@ -15,7 +15,7 @@ public class About extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.about);
 
-
+        //sets the text
         aboutv = (TextView) findViewById(R.id.abouttv);
         about = ("OneMore is an android mobile application developed by smusings." +
                 "\nIf you have any questions or recomendations feel to email smusings at: " +

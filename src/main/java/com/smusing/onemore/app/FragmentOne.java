@@ -1,6 +1,5 @@
 package com.smusing.onemore.app;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.GestureDetector;
@@ -16,10 +15,12 @@ import android.widget.TextView;
 public class FragmentOne extends Fragment{
 
     //in case i want to do it differently
-    private static final String DEBUG_TAG = "Gestures";
     Number nul;
     String ini;
-    Context mContext;
+    EditText frag_text;
+    TextView frag_count;
+    LinearLayout frag_layout;
+
 
 
     @Override
@@ -35,15 +36,14 @@ public class FragmentOne extends Fragment{
 
         //setup to use
 
-        final EditText frag_text = (EditText) view.findViewById(R.id.fragment_text);
-        final TextView chaptercount = (TextView) view.findViewById(R.id.fragment_count);
-        final LinearLayout ll=(LinearLayout)view.findViewById(R.id.fragment_layout);
-        chaptercount.setText(ini);
-        final KeyEvent event;
+        frag_text = (EditText) view.findViewById(R.id.fragment_text);
+        frag_count = (TextView) view.findViewById(R.id.fragment_count);
+        frag_layout=(LinearLayout)view.findViewById(R.id.fragment_layout);
+        frag_count.setText(ini);
 
         frag_text.setEnabled(false);
 
-        ll.setOnLongClickListener(new View.OnLongClickListener() {
+        frag_layout.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
                 frag_text.setEnabled(true);
@@ -75,12 +75,11 @@ public class FragmentOne extends Fragment{
                         float sensitvity = 50;
                         //right to left
                         if ((e1.getX() - e2.getX()) > sensitvity) {
-                            Number n = -1;
                             int nn = -1;
-                            String value = chaptercount.getText().toString();
+                            String value = frag_count.getText().toString();
                             int intvalue = Integer.parseInt(value);
                             int amount = intvalue + nn;
-                            chaptercount.setText(Integer.toString(amount));
+                            frag_count.setText(Integer.toString(amount));
                         }
                         //left to right
                         else if ((e2.getX() - e1.getX()) > sensitvity) {
@@ -93,16 +92,16 @@ public class FragmentOne extends Fragment{
                     public boolean onSingleTapUp(MotionEvent e){
                         Number n = 1;
                         int nn = 1;
-                        String value = chaptercount.getText().toString();
+                        String value = frag_count.getText().toString();
                         int intvalue = Integer.parseInt(value);
                         int amount = intvalue + nn;
-                        chaptercount.setText(Integer.toString(amount));
+                        frag_count.setText(Integer.toString(amount));
 
                         return true;
                     }
                 }
         );
-        ll.setOnTouchListener(new View.OnTouchListener() {
+        frag_layout.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 return gesture.onTouchEvent(event);

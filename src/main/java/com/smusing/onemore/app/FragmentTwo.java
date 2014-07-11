@@ -109,15 +109,32 @@ public class FragmentTwo extends Fragment{
         pagecount.setText(n.toString());
     }
 
-    public void skree(){
+    public void onResume(Bundle savedInstanceState){
         final TextView pagetext = (TextView) getView().findViewById(R.id.page_text);
-        Bundle b=FragmentTwo.this.getArguments();
-        String s=b.getString("subject", null);
+        Bundle b=getArguments();
+        String s=b.getString("subject");
         String t="default";
-        if (s != null){
+        if (b != null){
             pagetext.setText(s);
         }else{
             pagetext.setText(t);
         }
     }
+
+
+
+    public void skree(){
+        final TextView pagetext = (TextView) getView().findViewById(R.id.page_text);
+
+
+        Bundle b=getArguments();
+        String s=b.getString("subject");
+        String t="default";
+        if (b != null && !b.containsKey("subject")){
+            pagetext.setText(s);
+        }else{
+            pagetext.setText(t);
+        }
+    }
+
 }
