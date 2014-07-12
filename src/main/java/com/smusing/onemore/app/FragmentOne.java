@@ -2,10 +2,7 @@ package com.smusing.onemore.app;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.view.GestureDetector;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
@@ -42,7 +39,7 @@ public class FragmentOne extends Fragment{
         frag_count.setText(ini);
 
         frag_text.setEnabled(false);
-
+/*
         frag_layout.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
@@ -60,11 +57,12 @@ public class FragmentOne extends Fragment{
                 return false;
             }
         });
+        */
 
 
 
 
-
+/*
 
         //onSwipe Gesture i need
         final GestureDetector gesture = new GestureDetector(getActivity(),
@@ -107,6 +105,7 @@ public class FragmentOne extends Fragment{
                 return gesture.onTouchEvent(event);
             }
         });
+        */
 
         return view;
     }
