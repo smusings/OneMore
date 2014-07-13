@@ -7,17 +7,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class FragmentOne extends Fragment{
 
-    //in case i want to do it differently
+    //everything we need
     Number nul;
     String ini;
     EditText frag_text;
     TextView frag_count;
-    LinearLayout frag_layout;
     Button add1;
     Button sub1;
     Button reset;
@@ -27,37 +25,55 @@ public class FragmentOne extends Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                      Bundle savedInstanceState) {
-
+        //inflates the xml layout
         View view = inflater.inflate(R.layout.fragment_one, container, false);
 
+        //gives the the 0 we need
         nul = 0;
         ini = nul.toString();
 
 
 
         //setup to use
-
         frag_text = (EditText) view.findViewById(R.id.fragment_text);
         frag_count = (TextView) view.findViewById(R.id.fragment_count);
-        frag_layout=(LinearLayout)view.findViewById(R.id.fragment_layout);
+        add1=(Button)view.findViewById(R.id.btn_plus_one);
+        sub1=(Button)view.findViewById(R.id.btn_minus_one);
+        reset=(Button)view.findViewById(R.id.btn_reset);
+
+        //sets our initial count to 0
         frag_count.setText(ini);
 
-        frag_text.setEnabled(false);
+        //+1
+        add1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int a1 = 1;
+                String value = frag_count.getText().toString();
+                int intvalue = Integer.parseInt(value);
+                int amount = intvalue + a1;
+                frag_count.setText(Integer.toString(amount));
+            }
+        });
+        //-1
+        sub1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int a1 = -1;
+                String value = frag_count.getText().toString();
+                int intvalue = Integer.parseInt(value);
+                int amount = intvalue + a1;
+                frag_count.setText(Integer.toString(amount));
+            }
+        });
+        //0
+        reset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-
-
+                frag_count.setText(ini);
+            }
+        });
         return view;
-    }
-
-    public String getBundleString(Bundle b){
-        String value=b.getString("subject");
-        return value;
-    }
-
-    public void doPositiveClick(){
-
-        final TextView chaptercount = (TextView) getView().findViewById(R.id.fragment_count);
-        Number n=0;
-        chaptercount.setText(n.toString());
     }
 }

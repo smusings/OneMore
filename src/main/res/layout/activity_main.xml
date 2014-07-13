@@ -26,6 +26,7 @@
             android:layout_height="fill_parent"
             android:layout_weight="1">
             <fragment
+                android:background="@color/CadetBlue"
                 android:id="@+id/fragment1"
                 android:name="com.smusing.onemore.app.FragmentOne"
                 android:layout_height="fill_parent"
@@ -34,11 +35,11 @@
                 tools:layout="@layout/fragment_one" />
             <fragment
                 android:id="@+id/fragment2"
-                android:name="com.smusing.onemore.app.FragmentTwo"
+                android:name="com.smusing.onemore.app.FragmentOne"
                 android:layout_height="fill_parent"
                 android:layout_width="fill_parent"
                 android:layout_weight="1"
-                tools:layout="@layout/fragment_two" />
+                tools:layout="@layout/fragment_one" />
         </LinearLayout>
         <LinearLayout
             android:layout_row="1"
@@ -47,18 +48,18 @@
             android:layout_weight="1">
             <fragment
                 android:id="@+id/fragment3"
-                android:name="com.smusing.onemore.app.FragmentThree"
+                android:name="com.smusing.onemore.app.FragmentOne"
                 android:layout_height="fill_parent"
                 android:layout_width="fill_parent"
                 android:layout_weight="1"
-                tools:layout="@layout/fragment_three" />
+                tools:layout="@layout/fragment_one"  />
             <fragment
                 android:id="@+id/fragment4"
-                android:name="com.smusing.onemore.app.FragmentFour"
+                android:name="com.smusing.onemore.app.FragmentOne"
                 android:layout_height="fill_parent"
                 android:layout_width="fill_parent"
                 android:layout_weight="1"
-                tools:layout="@layout/fragment_four" />
+                tools:layout="@layout/fragment_one"  />
         </LinearLayout>
         <LinearLayout
             android:layout_row="2"
@@ -67,17 +68,17 @@
             android:layout_weight="1">
             <fragment
                 android:id="@+id/fragment5"
-                android:name="com.smusing.onemore.app.FragmentFive"
+                android:name="com.smusing.onemore.app.FragmentOne"
                 android:layout_height="fill_parent"
                 android:layout_width="fill_parent"
                 android:layout_weight="1"
-                tools:layout="@layout/fragment_five" />
+                tools:layout="@layout/fragment_one"  />
             <fragment
                 android:id="@+id/fragment6"
-                android:name="com.smusing.onemore.app.FragmentSix"
+                android:name="com.smusing.onemore.app.FragmentOne"
                 android:layout_height="fill_parent"
                 android:layout_width="fill_parent"
                 android:layout_weight="1"
-                tools:layout="@layout/fragment_six" />
+                tools:layout="@layout/fragment_one"  />
         </LinearLayout>
 </LinearLayout>
