@@ -76,4 +76,15 @@ public class FragmentOne extends Fragment{
         });
         return view;
     }
+/*
+    @Override
+    public void onConfigurationChanged(Configuration newConfig){
+        super.onConfigurationChanged(newConfig);
+        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE){
+
+        } else if(newConfig.orientation == Configuration.ORIENTATION_PORTRAIT){
+
+        }
+    }
+    */
 }

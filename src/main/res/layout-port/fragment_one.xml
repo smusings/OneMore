@@ -33,22 +33,22 @@
             android:text="+"
             android:textColor="@color/White" />
         </LinearLayout>
-    <TextView
-        android:id="@+id/fragment_count"
-        android:layout_width="fill_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:text="0"
-        android:textColor="@color/White"
-        android:gravity="center"
-        android:textSize="32dp"/>
-    <EditText
-        android:id="@+id/fragment_text"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:inputType="text"
-        android:imeOptions="actionDone"
-        android:cursorVisible="false"
-        android:textColor="@color/White"
-        android:gravity="center"/>
-</LinearLayout>
+        <TextView
+            android:id="@+id/fragment_count"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="0"
+            android:textColor="@color/White"
+            android:gravity="center"
+            android:textSize="32dp"/>
+        <EditText
+            android:id="@+id/fragment_text"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:imeOptions="actionDone"
+            android:cursorVisible="false"
+            android:textColor="@color/White"
+            android:gravity="center"/>
+    </LinearLayout>
