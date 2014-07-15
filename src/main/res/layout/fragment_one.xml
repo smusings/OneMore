@@ -11,27 +11,25 @@
         <Button
             style="?android:attr/buttonStyleSmall"
             android:id="@+id/btn_minus_one"
-            android:layout_width="0dp"
-            android:layout_weight="1"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="-"
             android:textColor="@color/White"/>
         <Button
             style="?android:attr/buttonStyleSmall"
             android:id="@+id/btn_reset"
-            android:layout_width="0dp"
-            android:layout_weight="1"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="0"
-            android:textColor="@color/White" />
+            android:textColor="@color/White"/>
         <Button
             style="?android:attr/buttonStyleSmall"
             android:id="@+id/btn_plus_one"
-            android:layout_width="0dp"
-            android:layout_weight="1"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="+"
-            android:textColor="@color/White" />
+            android:textColor="@color/White"/>
+
         </LinearLayout>
         <TextView
             android:id="@+id/fragment_count"
@@ -42,13 +40,13 @@
             android:textColor="@color/White"
             android:gravity="center"
             android:textSize="32dp"/>
-        <EditText
-            android:id="@+id/fragment_text"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:inputType="text"
-            android:imeOptions="actionDone"
-            android:cursorVisible="false"
-            android:textColor="@color/White"
-            android:gravity="center"/>
+    <EditText
+        android:id="@+id/fragment_text"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:imeOptions="actionDone"
+        android:cursorVisible="false"
+        android:textColor="@color/White"
+        android:gravity="center"/>
     </LinearLayout>

@@ -3,10 +3,8 @@ package com.smusing.onemore.app;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.view.View;
+import android.widget.LinearLayout;
 
-/**
- * Created by etyulmenkov on 7/14/14.
- */
 public class SetupActivity extends FragmentActivity{
     //setup for activity
     FragmentManager fm=getSupportFragmentManager();
@@ -16,6 +14,8 @@ public class SetupActivity extends FragmentActivity{
     FragmentOne f4;
     FragmentOne f5;
     FragmentOne f6;
+    LinearLayout l1;
+    LinearLayout l2;
 
     private boolean singleViewExpand=false;
 
@@ -37,6 +37,7 @@ public class SetupActivity extends FragmentActivity{
                         .hide(f5)
                         .hide(f6)
                         .commit();
+                l2.setVisibility(View.GONE);
                 singleViewExpand=true;
             }
         }
@@ -59,6 +60,7 @@ public class SetupActivity extends FragmentActivity{
                         .hide(f5)
                         .hide(f6)
                         .commit();
+                l1.setVisibility(View.GONE);
                 singleViewExpand=true;
             }
         }
@@ -81,6 +83,7 @@ public class SetupActivity extends FragmentActivity{
                         .hide(f5)
                         .hide(f6)
                         .commit();
+                l2.setVisibility(View.GONE);
                 singleViewExpand=true;
             }
         }
@@ -103,6 +106,7 @@ public class SetupActivity extends FragmentActivity{
                         .hide(f5)
                         .hide(f6)
                         .commit();
+                l1.setVisibility(View.GONE);
                 singleViewExpand=true;
             }
         }
@@ -124,6 +128,7 @@ public class SetupActivity extends FragmentActivity{
                         .show(f5)
                         .hide(f6)
                         .commit();
+                l2.setVisibility(View.GONE);
                 singleViewExpand=true;
             }
         }
@@ -145,6 +150,7 @@ public class SetupActivity extends FragmentActivity{
                         .hide(f5)
                         .show(f6)
                         .commit();
+                l1.setVisibility(View.GONE);
                 singleViewExpand=true;
             }
         }
@@ -161,6 +167,8 @@ public class SetupActivity extends FragmentActivity{
                 .show(f5)
                 .show(f6)
                 .commit();
+        l1.setVisibility(View.VISIBLE);
+        l2.setVisibility(View.VISIBLE);
     }
 
     //defines a method to hide all views

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.LinearLayout;
 
 
 public class MainActivity extends SetupActivity{
@@ -12,6 +13,9 @@ public class MainActivity extends SetupActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        l1=(LinearLayout)findViewById(R.id.ll1);
+        l2=(LinearLayout)findViewById(R.id.ll2);
 
         //assigns values to al fragments
         f1=(FragmentOne)getSupportFragmentManager().findFragmentById(R.id.fragment1);
