@@ -1,8 +1,5 @@
-OneMore is a work in progress app, mean to keep track of how many "One More episodes/chapters/levels/games" you have done so far.
+OneMore is a counting app used to keep track of how many times a user has done a certain action, with room to keep track of up to six activities.
 
-**TODO**
+OneMore uses Fragments to display the information, and hide it accordingly as the user commands.
 
-1. Fix UI
-2. Fix Code
-    2a. Possibly fragment it up
-3. Release
+During development, OneMore used DialogFragments, Motion detection, and CustomArrays to display the information. However, the simplest way to display and modify the information was found to be a simple fragment containing a few buttons, a textview, and an edittext.
