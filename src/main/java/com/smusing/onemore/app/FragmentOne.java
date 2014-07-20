@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class FragmentOne extends Fragment{
@@ -19,6 +20,9 @@ public class FragmentOne extends Fragment{
     Button add1;
     Button sub1;
     Button reset;
+    LinearLayout buttonl;
+
+    private boolean singleViewExpand=false;
 
 
 
@@ -40,6 +44,10 @@ public class FragmentOne extends Fragment{
         add1=(Button)view.findViewById(R.id.btn_plus_one);
         sub1=(Button)view.findViewById(R.id.btn_minus_one);
         reset=(Button)view.findViewById(R.id.btn_reset);
+        buttonl=(LinearLayout)view.findViewById(R.id.button_layout);
+
+        buttonl.setVisibility(View.GONE);
+
 
         //sets our initial count to 0
         frag_count.setText(ini);
@@ -74,17 +82,27 @@ public class FragmentOne extends Fragment{
                 frag_count.setText(ini);
             }
         });
+
         return view;
     }
-/*
-    @Override
-    public void onConfigurationChanged(Configuration newConfig){
-        super.onConfigurationChanged(newConfig);
-        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE){
 
-        } else if(newConfig.orientation == Configuration.ORIENTATION_PORTRAIT){
-
-        }
+    public void showButtons(){
+        buttonl=(LinearLayout)getView().findViewById(R.id.button_layout);
+        buttonl.setVisibility(View.VISIBLE);
     }
-    */
+
+    public void hideButtons(){
+        buttonl=(LinearLayout)getView().findViewById(R.id.button_layout);
+        buttonl.setVisibility(View.GONE);
+    }
+
+    public void resetCount(){
+
+        nul = 0;
+        ini = nul.toString();
+        frag_count = (TextView) getView().findViewById(R.id.fragment_count);
+        frag_count.setText(ini);
+
+    }
+
 }

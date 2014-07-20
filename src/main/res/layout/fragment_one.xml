@@ -1,16 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <LinearLayout
-        android:layout_weight="1"
-        android:id="@+id/info_ll"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
-        <RelativeLayout
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:id="@+id/info_ll"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent">
+            <LinearLayout
+                android:id="@+id/button_layout"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+                <Button
+                    style="?android:attr/buttonStyleSmall"
+                    android:id="@+id/btn_minus_one"
+                    android:layout_weight="1"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="-"
+                    android:textColor="@color/White"/>
+                <Button
+                    style="?android:attr/buttonStyleSmall"
+                    android:id="@+id/btn_reset"
+                    android:layout_weight="1"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textColor="@color/White"/>
+                <Button
+                    style="?android:attr/buttonStyleSmall"
+                    android:id="@+id/btn_plus_one"
+                    android:layout_weight="1"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="+"
+                    android:textColor="@color/White"/>
+            </LinearLayout>
             <EditText
                 android:id="@+id/fragment_text"
                 android:layout_width="fill_parent"
@@ -21,56 +48,13 @@
                 android:textColor="@color/White"
                 android:gravity="center"/>
             <TextView
-                android:layout_below="@+id/fragment_text"
                 android:id="@+id/fragment_count"
-                android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
+                android:layout_width="fill_parent"
+                android:layout_weight="1"
                 android:text="0"
                 android:textColor="@color/White"
                 android:gravity="center"
-                android:textSize="32dp"/>
-        </RelativeLayout>
-    </LinearLayout>
-    <RelativeLayout
-        android:layout_height="wrap_content"
-        android:layout_width="fill_parent"
-        android:orientation="horizontal"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
-        <Button
-            style="?android:attr/buttonStyleSmall"
-            android:id="@+id/btn_reset"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="0"
-            android:textColor="@color/White"
-            android:layout_alignParentTop="true"
-            android:layout_toRightOf="@+id/btn_minus_one" />
-        <Button
-            style="?android:attr/buttonStyleSmall"
-            android:id="@+id/btn_textreset"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="C"
-            android:textColor="@color/White"
-            android:layout_toLeftOf="@+id/btn_plus_one"/>
-        <Button
-            style="?android:attr/buttonStyleSmall"
-            android:id="@+id/btn_minus_one"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="-"
-            android:textColor="@color/White"/>
-        <Button
-            style="?android:attr/buttonStyleSmall"
-            android:id="@+id/btn_plus_one"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="+"
-            android:textColor="@color/White"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
-    </RelativeLayout>
-</RelativeLayout>
+                android:textSize="30dp"/>
+        </LinearLayout>
+</LinearLayout>

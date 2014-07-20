@@ -55,6 +55,12 @@ public class MainActivity extends SetupActivity{
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.action_reset) {
+            f1.resetCount();
+            f2.resetCount();
+            f3.resetCount();
+            f4.resetCount();
+            f5.resetCount();
+            f6.resetCount();
             return true;
         }
         if (id == R.id.action_about) {

@@ -23,9 +23,11 @@ public class SetupActivity extends FragmentActivity{
     public View.OnClickListener myOneClickListener=new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            f1=(FragmentOne)getSupportFragmentManager().findFragmentById(R.id.fragment1);
             // if a view is fullscreen, on click shows all views instead
             if(singleViewExpand){
                 showAllViews();
+                f1.hideButtons();
                 singleViewExpand=false;
             }else{
                 //if a view is not fullscreen, hides all views then expands the one you clicked on.
@@ -38,6 +40,7 @@ public class SetupActivity extends FragmentActivity{
                         .hide(f6)
                         .commit();
                 l2.setVisibility(View.GONE);
+                f1.showButtons();
                 singleViewExpand=true;
             }
         }
@@ -46,9 +49,11 @@ public class SetupActivity extends FragmentActivity{
     public View.OnClickListener myTwoClickListener=new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            f2=(FragmentOne)getSupportFragmentManager().findFragmentById(R.id.fragment2);
             // if a view is fullscreen, on click shows all views instead
             if(singleViewExpand){
                 showAllViews();
+                f2.hideButtons();
                 singleViewExpand=false;
             }else{
                 //if a view is not fullscreen, hides all views then expands the one you clicked on.
@@ -61,6 +66,7 @@ public class SetupActivity extends FragmentActivity{
                         .hide(f6)
                         .commit();
                 l1.setVisibility(View.GONE);
+                f2.showButtons();
                 singleViewExpand=true;
             }
         }
@@ -69,9 +75,11 @@ public class SetupActivity extends FragmentActivity{
     public View.OnClickListener myThreeClickListener=new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            f3=(FragmentOne)getSupportFragmentManager().findFragmentById(R.id.fragment3);
             // if a view is fullscreen, on click shows all views instead
             if(singleViewExpand){
                 showAllViews();
+                f3.hideButtons();
                 singleViewExpand=false;
             }else{
                 //if a view is not fullscreen, hides all views then expands the one you clicked on.
@@ -84,6 +92,7 @@ public class SetupActivity extends FragmentActivity{
                         .hide(f6)
                         .commit();
                 l2.setVisibility(View.GONE);
+                f3.showButtons();
                 singleViewExpand=true;
             }
         }
@@ -92,9 +101,11 @@ public class SetupActivity extends FragmentActivity{
     public View.OnClickListener myFourClickListener=new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            f4=(FragmentOne)getSupportFragmentManager().findFragmentById(R.id.fragment4);
             // if a view is fullscreen, on click shows all views instead
             if(singleViewExpand){
                 showAllViews();
+                f4.hideButtons();
                 singleViewExpand=false;
             }else{
                 //if a view is not fullscreen, hides all views then expands the one you clicked on.
@@ -107,6 +118,7 @@ public class SetupActivity extends FragmentActivity{
                         .hide(f6)
                         .commit();
                 l1.setVisibility(View.GONE);
+                f4.showButtons();
                 singleViewExpand=true;
             }
         }
@@ -114,9 +126,11 @@ public class SetupActivity extends FragmentActivity{
     public View.OnClickListener myFiveClickListener=new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            f5=(FragmentOne)getSupportFragmentManager().findFragmentById(R.id.fragment5);
             // if a view is fullscreen, on click shows all views instead
             if(singleViewExpand){
                 showAllViews();
+                f5.hideButtons();
                 singleViewExpand=false;
             }else{
                 //if a view is not fullscreen, hides all views then expands the one you clicked on.
@@ -129,6 +143,7 @@ public class SetupActivity extends FragmentActivity{
                         .hide(f6)
                         .commit();
                 l2.setVisibility(View.GONE);
+                f5.showButtons();
                 singleViewExpand=true;
             }
         }
@@ -136,9 +151,11 @@ public class SetupActivity extends FragmentActivity{
     public View.OnClickListener mySixClickListener=new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            f6=(FragmentOne)getSupportFragmentManager().findFragmentById(R.id.fragment6);
             // if a view is fullscreen, on click shows all views instead
             if(singleViewExpand){
                 showAllViews();
+                f6.hideButtons();
                 singleViewExpand=false;
             }else{
                 //if a view is not fullscreen, hides all views then expands the one you clicked on.
@@ -151,6 +168,7 @@ public class SetupActivity extends FragmentActivity{
                         .show(f6)
                         .commit();
                 l1.setVisibility(View.GONE);
+                f6.showButtons();
                 singleViewExpand=true;
             }
         }
