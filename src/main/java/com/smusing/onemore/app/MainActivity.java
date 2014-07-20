@@ -14,10 +14,11 @@ public class MainActivity extends SetupActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //identify the layouts
         l1=(LinearLayout)findViewById(R.id.ll1);
         l2=(LinearLayout)findViewById(R.id.ll2);
 
-        //assigns values to al fragments
+        //assigns values to all fragments
         f1=(FragmentOne)getSupportFragmentManager().findFragmentById(R.id.fragment1);
         f2=(FragmentOne)getSupportFragmentManager().findFragmentById(R.id.fragment2);
         f3=(FragmentOne)getSupportFragmentManager().findFragmentById(R.id.fragment3);

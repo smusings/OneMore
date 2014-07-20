@@ -14,17 +14,12 @@ public class FragmentOne extends Fragment{
 
     //everything we need
     Number nul;
-    String ini;
     EditText frag_text;
     TextView frag_count;
     Button add1;
     Button sub1;
     Button reset;
     LinearLayout buttonl;
-
-    private boolean singleViewExpand=false;
-
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -34,9 +29,6 @@ public class FragmentOne extends Fragment{
 
         //gives the the 0 we need
         nul = 0;
-        ini = nul.toString();
-
-
 
         //setup to use
         frag_text = (EditText) view.findViewById(R.id.fragment_text);
@@ -46,11 +38,11 @@ public class FragmentOne extends Fragment{
         reset=(Button)view.findViewById(R.id.btn_reset);
         buttonl=(LinearLayout)view.findViewById(R.id.button_layout);
 
+        //automatically hides buttons
         buttonl.setVisibility(View.GONE);
 
-
         //sets our initial count to 0
-        frag_count.setText(ini);
+        frag_count.setText(nul.toString());
 
         //+1
         add1.setOnClickListener(new View.OnClickListener() {
@@ -79,30 +71,29 @@ public class FragmentOne extends Fragment{
             @Override
             public void onClick(View v) {
 
-                frag_count.setText(ini);
+                frag_count.setText(nul.toString());
             }
         });
 
         return view;
     }
 
+    //method for activities to access
     public void showButtons(){
         buttonl=(LinearLayout)getView().findViewById(R.id.button_layout);
         buttonl.setVisibility(View.VISIBLE);
     }
 
+    //method for activities to access
     public void hideButtons(){
         buttonl=(LinearLayout)getView().findViewById(R.id.button_layout);
         buttonl.setVisibility(View.GONE);
     }
 
+    //method for activities to access
     public void resetCount(){
-
         nul = 0;
-        ini = nul.toString();
         frag_count = (TextView) getView().findViewById(R.id.fragment_count);
-        frag_count.setText(ini);
-
+        frag_count.setText(nul.toString());
     }
-
 }

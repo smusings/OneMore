@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 public class SetupActivity extends FragmentActivity{
+
     //setup for activity
     FragmentManager fm=getSupportFragmentManager();
     FragmentOne f1;
@@ -17,6 +18,7 @@ public class SetupActivity extends FragmentActivity{
     LinearLayout l1;
     LinearLayout l2;
 
+    //boolean to set up views hidden or not
     private boolean singleViewExpand=false;
 
     //onclick listener to hide and show fragments.
