@@ -96,4 +96,31 @@ public class FragmentOne extends Fragment{
         frag_count = (TextView) getView().findViewById(R.id.fragment_count);
         frag_count.setText(nul.toString());
     }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState){
+        super.onSaveInstanceState(outState);
+
+
+        frag_text = (EditText) getView().findViewById(R.id.fragment_text);
+        frag_count = (TextView) getView().findViewById(R.id.fragment_count);
+
+        String texts=frag_text.getText().toString();
+        String counts=frag_count.getText().toString();
+
+        outState.putCharSequence("texts", texts);
+        outState.putCharSequence("counts", counts);
+    }
+
+    public void onRestoreInstanceState(Bundle savedInstanceState){
+
+        frag_text = (EditText) getView().findViewById(R.id.fragment_text);
+        frag_count = (TextView) getView().findViewById(R.id.fragment_count);
+
+        CharSequence usertext=savedInstanceState.getCharSequence("texts");
+        frag_text.setText(usertext);
+
+        CharSequence usercount=savedInstanceState.getCharSequence("counts");
+        frag_count.setText(usercount);
+    }
 }
