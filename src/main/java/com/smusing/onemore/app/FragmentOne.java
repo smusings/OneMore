@@ -1,5 +1,6 @@
 package com.smusing.onemore.app;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -75,6 +76,12 @@ public class FragmentOne extends Fragment{
             }
         });
 
+
+
+        SharedPreferences pref=getActivity().getPreferences(0);
+        String id=pref.getString("count", nul.toString());
+        frag_count.setText(id);
+
         return view;
     }
 
@@ -98,29 +105,19 @@ public class FragmentOne extends Fragment{
     }
 
     @Override
-    public void onSaveInstanceState(Bundle outState){
-        super.onSaveInstanceState(outState);
+    public void onStop(){
+        super.onStop();
 
-
-        frag_text = (EditText) getView().findViewById(R.id.fragment_text);
+        //Get the textview so we can get the text from it
         frag_count = (TextView) getView().findViewById(R.id.fragment_count);
 
-        String texts=frag_text.getText().toString();
-        String counts=frag_count.getText().toString();
+        //make the SharedPReference and set it up
+        //we also make an editor, add our variable to it and commit
+        SharedPreferences pref=getActivity().getPreferences(0);
+        SharedPreferences.Editor edt=pref.edit();
+        edt.putString("count",frag_count.getText().toString());
 
-        outState.putCharSequence("texts", texts);
-        outState.putCharSequence("counts", counts);
-    }
-
-    public void onRestoreInstanceState(Bundle savedInstanceState){
-
-        frag_text = (EditText) getView().findViewById(R.id.fragment_text);
-        frag_count = (TextView) getView().findViewById(R.id.fragment_count);
-
-        CharSequence usertext=savedInstanceState.getCharSequence("texts");
-        frag_text.setText(usertext);
-
-        CharSequence usercount=savedInstanceState.getCharSequence("counts");
-        frag_count.setText(usercount);
+        //commit the edits
+        edt.commit();
     }
 }
