@@ -36,6 +36,7 @@ public class MainActivity extends SetupActivity{
 
 
         //assigns clicklistener to all fragments so they know how to react.
+        //the particular listeners are all from the SetupActivity which we extend
         f1.getView().setOnClickListener(myOneClickListener);
         f2.getView().setOnClickListener(myTwoClickListener);
         f3.getView().setOnClickListener(myThreeClickListener);
@@ -56,6 +57,7 @@ public class MainActivity extends SetupActivity{
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.action_reset) {
+            //access a method in the fragment that resets the count to 0
             f1.resetCount();
             f2.resetCount();
             f3.resetCount();
@@ -65,6 +67,7 @@ public class MainActivity extends SetupActivity{
             return true;
         }
         if (id == R.id.action_about) {
+            //opens up a new activity that will take us to the about page
             Intent intent = new Intent(this, About.class);
             startActivity(intent);
         }

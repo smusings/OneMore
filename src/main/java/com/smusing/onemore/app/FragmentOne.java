@@ -2,6 +2,7 @@ package com.smusing.onemore.app;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,8 +14,9 @@ import android.widget.TextView;
 
 public class FragmentOne extends Fragment{
 
+    public static final String PREF_COUNT="MyPrefsCount";
+
     //everything we need
-    Number nul;
     EditText frag_text;
     TextView frag_count;
     Button add1;
@@ -23,13 +25,22 @@ public class FragmentOne extends Fragment{
     LinearLayout buttonl;
 
     @Override
+    public void onActivityCreated(Bundle savedInstanceState){
+        super.onActivityCreated(savedInstanceState);
+
+        frag_count = (TextView) getView().findViewById(R.id.fragment_count);
+        //gets the string from sharedpreferences and puts it back
+        SharedPreferences pref=getActivity().getSharedPreferences(PREF_COUNT, 0);
+        String id=pref.getString("count", "0");
+        frag_count.setText(id);
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                      Bundle savedInstanceState) {
+
         //inflates the xml layout
         View view = inflater.inflate(R.layout.fragment_one, container, false);
-
-        //gives the the 0 we need
-        nul = 0;
 
         //setup to use
         frag_text = (EditText) view.findViewById(R.id.fragment_text);
@@ -42,14 +53,16 @@ public class FragmentOne extends Fragment{
         //automatically hides buttons
         buttonl.setVisibility(View.GONE);
 
-        //sets our initial count to 0
-        frag_count.setText(nul.toString());
 
         //+1
         add1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 int a1 = 1;
+                //get the text from the textview, make it a string
+                //convert the string to an int
+                //add two ints together
+                //convert int back to string and set it to the textview
                 String value = frag_count.getText().toString();
                 int intvalue = Integer.parseInt(value);
                 int amount = intvalue + a1;
@@ -71,51 +84,49 @@ public class FragmentOne extends Fragment{
         reset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                frag_count.setText(nul.toString());
+                frag_count.setText("0");
             }
         });
 
 
-
-        SharedPreferences pref=getActivity().getPreferences(0);
-        String id=pref.getString("count", nul.toString());
-        frag_count.setText(id);
-
         return view;
     }
 
+
     //method for activities to access
+    //shows buttons if full screen
     public void showButtons(){
         buttonl=(LinearLayout)getView().findViewById(R.id.button_layout);
         buttonl.setVisibility(View.VISIBLE);
     }
 
     //method for activities to access
+    //hides buttons if full screen
     public void hideButtons(){
         buttonl=(LinearLayout)getView().findViewById(R.id.button_layout);
         buttonl.setVisibility(View.GONE);
     }
 
     //method for activities to access
+    //resets the count to 0 on the activity
     public void resetCount(){
-        nul = 0;
         frag_count = (TextView) getView().findViewById(R.id.fragment_count);
-        frag_count.setText(nul.toString());
+        frag_count.setText("0");
     }
 
     @Override
-    public void onStop(){
-        super.onStop();
-
+    public void onPause(){
+        super.onPause();
         //Get the textview so we can get the text from it
         frag_count = (TextView) getView().findViewById(R.id.fragment_count);
 
+        //converts frag_count text to string
+        String count=frag_count.getText().toString();
+
         //make the SharedPReference and set it up
         //we also make an editor, add our variable to it and commit
-        SharedPreferences pref=getActivity().getPreferences(0);
-        SharedPreferences.Editor edt=pref.edit();
-        edt.putString("count",frag_count.getText().toString());
+        SharedPreferences.Editor edt= PreferenceManager.getDefaultSharedPreferences(getActivity()).edit();
+        edt.putString("count", count);
 
         //commit the edits
         edt.commit();
