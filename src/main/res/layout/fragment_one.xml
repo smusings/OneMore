@@ -52,7 +52,6 @@
                 android:layout_height="fill_parent"
                 android:layout_width="fill_parent"
                 android:layout_weight="1"
-                android:text="0"
                 android:textColor="@color/White"
                 android:gravity="center"
                 android:textSize="30dp"/>

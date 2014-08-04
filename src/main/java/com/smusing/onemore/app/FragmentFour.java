@@ -11,9 +11,10 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class FragmentOne extends Fragment{
 
-    public static final String PREF_COUNT1="MyPrefsCount1";
+public class FragmentFour extends Fragment {
+
+    public static final String PREF_COUNT4="MyPrefsCount4";
 
     //everything we need
     EditText frag_text;
@@ -29,14 +30,14 @@ public class FragmentOne extends Fragment{
 
         frag_count = (TextView) getView().findViewById(R.id.fragment_count);
         //gets the string from sharedpreferences and puts it back
-        SharedPreferences pref=getActivity().getSharedPreferences(PREF_COUNT1, 0);
+        SharedPreferences pref=getActivity().getSharedPreferences(PREF_COUNT4, 0);
         String id=pref.getString("count", "0");
         frag_count.setText(id);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                     Bundle savedInstanceState) {
+                             Bundle savedInstanceState) {
 
         //inflates the xml layout
         View view = inflater.inflate(R.layout.fragment_one, container, false);
@@ -124,7 +125,7 @@ public class FragmentOne extends Fragment{
 
         //make the SharedPReference and set it up
         //we also make an editor, add our variable to it and commit
-        SharedPreferences pref=getActivity().getSharedPreferences(PREF_COUNT1, 0);
+        SharedPreferences pref=getActivity().getSharedPreferences(PREF_COUNT4, 0);
         SharedPreferences.Editor edt=pref.edit();
         edt.putString("count", count);
 

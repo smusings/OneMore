@@ -10,11 +10,11 @@ public class SetupActivity extends FragmentActivity{
     //setup for activity
     FragmentManager fm=getSupportFragmentManager();
     FragmentOne f1;
-    FragmentOne f2;
-    FragmentOne f3;
-    FragmentOne f4;
-    FragmentOne f5;
-    FragmentOne f6;
+    FragmentTwo f2;
+    FragmentThree f3;
+    FragmentFour f4;
+    FragmentFive f5;
+    FragmentSix f6;
     LinearLayout l1;
     LinearLayout l2;
 
@@ -51,7 +51,7 @@ public class SetupActivity extends FragmentActivity{
     public View.OnClickListener myTwoClickListener=new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            f2=(FragmentOne)getSupportFragmentManager().findFragmentById(R.id.fragment2);
+            f2=(FragmentTwo)getSupportFragmentManager().findFragmentById(R.id.fragment2);
             // if a view is fullscreen, on click shows all views instead
             if(singleViewExpand){
                 showAllViews();
@@ -77,7 +77,7 @@ public class SetupActivity extends FragmentActivity{
     public View.OnClickListener myThreeClickListener=new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            f3=(FragmentOne)getSupportFragmentManager().findFragmentById(R.id.fragment3);
+            f3=(FragmentThree)getSupportFragmentManager().findFragmentById(R.id.fragment3);
             // if a view is fullscreen, on click shows all views instead
             if(singleViewExpand){
                 showAllViews();
@@ -103,7 +103,7 @@ public class SetupActivity extends FragmentActivity{
     public View.OnClickListener myFourClickListener=new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            f4=(FragmentOne)getSupportFragmentManager().findFragmentById(R.id.fragment4);
+            f4=(FragmentFour)getSupportFragmentManager().findFragmentById(R.id.fragment4);
             // if a view is fullscreen, on click shows all views instead
             if(singleViewExpand){
                 showAllViews();
@@ -128,7 +128,7 @@ public class SetupActivity extends FragmentActivity{
     public View.OnClickListener myFiveClickListener=new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            f5=(FragmentOne)getSupportFragmentManager().findFragmentById(R.id.fragment5);
+            f5=(FragmentFive)getSupportFragmentManager().findFragmentById(R.id.fragment5);
             // if a view is fullscreen, on click shows all views instead
             if(singleViewExpand){
                 showAllViews();
@@ -153,7 +153,7 @@ public class SetupActivity extends FragmentActivity{
     public View.OnClickListener mySixClickListener=new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            f6=(FragmentOne)getSupportFragmentManager().findFragmentById(R.id.fragment6);
+            f6=(FragmentSix)getSupportFragmentManager().findFragmentById(R.id.fragment6);
             // if a view is fullscreen, on click shows all views instead
             if(singleViewExpand){
                 showAllViews();

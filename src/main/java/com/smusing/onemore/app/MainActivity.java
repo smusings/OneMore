@@ -20,11 +20,11 @@ public class MainActivity extends SetupActivity{
 
         //assigns values to all fragments
         f1=(FragmentOne)getSupportFragmentManager().findFragmentById(R.id.fragment1);
-        f2=(FragmentOne)getSupportFragmentManager().findFragmentById(R.id.fragment2);
-        f3=(FragmentOne)getSupportFragmentManager().findFragmentById(R.id.fragment3);
-        f4=(FragmentOne)getSupportFragmentManager().findFragmentById(R.id.fragment4);
-        f5=(FragmentOne)getSupportFragmentManager().findFragmentById(R.id.fragment5);
-        f6=(FragmentOne)getSupportFragmentManager().findFragmentById(R.id.fragment6);
+        f2=(FragmentTwo)getSupportFragmentManager().findFragmentById(R.id.fragment2);
+        f3=(FragmentThree)getSupportFragmentManager().findFragmentById(R.id.fragment3);
+        f4=(FragmentFour)getSupportFragmentManager().findFragmentById(R.id.fragment4);
+        f5=(FragmentFive)getSupportFragmentManager().findFragmentById(R.id.fragment5);
+        f6=(FragmentSix)getSupportFragmentManager().findFragmentById(R.id.fragment6);
 
         //set background color for each fragment
         f1.getView().setBackgroundColor(getResources().getColor(R.color.CadetBlue));

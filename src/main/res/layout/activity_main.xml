@@ -26,21 +26,21 @@
                 android:orientation="vertical">
                 <fragment
                     android:id="@+id/fragment2"
-                    android:name="com.smusing.onemore.app.FragmentOne"
+                    android:name="com.smusing.onemore.app.FragmentTwo"
                     android:layout_height="fill_parent"
                     android:layout_width="fill_parent"
                     android:layout_weight="1"
                     tools:layout="@layout/fragment_one"  />
                 <fragment
                     android:id="@+id/fragment4"
-                    android:name="com.smusing.onemore.app.FragmentOne"
+                    android:name="com.smusing.onemore.app.FragmentFour"
                     android:layout_height="fill_parent"
                     android:layout_width="fill_parent"
                     android:layout_weight="1"
                     tools:layout="@layout/fragment_one"  />
                 <fragment
                     android:id="@+id/fragment6"
-                    android:name="com.smusing.onemore.app.FragmentOne"
+                    android:name="com.smusing.onemore.app.FragmentSix"
                     android:layout_height="fill_parent"
                     android:layout_width="fill_parent"
                     android:layout_weight="1"
@@ -62,14 +62,14 @@
                     tools:layout="@layout/fragment_one"/>
                 <fragment
                     android:id="@+id/fragment3"
-                    android:name="com.smusing.onemore.app.FragmentOne"
+                    android:name="com.smusing.onemore.app.FragmentThree"
                     android:layout_height="fill_parent"
                     android:layout_width="fill_parent"
                     android:layout_weight="1"
                     tools:layout="@layout/fragment_one" />
                 <fragment
                     android:id="@+id/fragment5"
-                    android:name="com.smusing.onemore.app.FragmentOne"
+                    android:name="com.smusing.onemore.app.FragmentFive"
                     android:layout_height="fill_parent"
                     android:layout_width="fill_parent"
                     android:layout_weight="1"
