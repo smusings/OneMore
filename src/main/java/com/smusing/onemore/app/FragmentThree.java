@@ -28,11 +28,14 @@ public class FragmentThree extends Fragment {
     public void onActivityCreated(Bundle savedInstanceState){
         super.onActivityCreated(savedInstanceState);
 
+        frag_text = (EditText) getView().findViewById(R.id.fragment_text);
         frag_count = (TextView) getView().findViewById(R.id.fragment_count);
         //gets the string from sharedpreferences and puts it back
         SharedPreferences pref=getActivity().getSharedPreferences(PREF_COUNT3, 0);
-        String id=pref.getString("count", "0");
-        frag_count.setText(id);
+        String count1=pref.getString("count", "0");
+        String id=pref.getString("article", "");
+        frag_count.setText(count1);
+        frag_text.setText(id);
     }
 
     @Override
@@ -118,16 +121,15 @@ public class FragmentThree extends Fragment {
     public void onPause(){
         super.onPause();
         //Get the textview so we can get the text from it
+        frag_text = (EditText) getView().findViewById(R.id.fragment_text);
         frag_count = (TextView) getView().findViewById(R.id.fragment_count);
-
-        //converts frag_count text to string
-        String count=frag_count.getText().toString();
 
         //make the SharedPReference and set it up
         //we also make an editor, add our variable to it and commit
         SharedPreferences pref=getActivity().getSharedPreferences(PREF_COUNT3, 0);
         SharedPreferences.Editor edt=pref.edit();
-        edt.putString("count", count);
+        edt.putString("count", frag_count.getText().toString());
+        edt.putString("article", frag_text.getText().toString());
 
         //commit the edits
         edt.commit();
