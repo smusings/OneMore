@@ -94,7 +94,6 @@ public class FragmentOne extends Fragment{
         return view;
     }
 
-
     //method for activities to access
     //shows buttons if full screen
     public void showButtons(){
@@ -113,6 +112,8 @@ public class FragmentOne extends Fragment{
     //resets the count to 0 on the activity
     public void resetCount(){
         frag_count = (TextView) getView().findViewById(R.id.fragment_count);
+        frag_text = (EditText) getView().findViewById(R.id.fragment_text);
+        frag_text.setText("");
         frag_count.setText("0");
     }
 
