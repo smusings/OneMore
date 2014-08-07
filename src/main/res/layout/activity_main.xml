@@ -17,6 +17,35 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:orientation="horizontal">
+        <LinearLayout
+            android:id="@+id/ll1"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <fragment
+                android:background="@color/CadetBlue"
+                android:id="@+id/fragment1"
+                android:name="com.smusing.onemore.app.FragmentOne"
+                android:layout_height="fill_parent"
+                android:layout_width="fill_parent"
+                android:layout_weight="1"
+                tools:layout="@layout/fragment_one"/>
+            <fragment
+                android:id="@+id/fragment3"
+                android:name="com.smusing.onemore.app.FragmentThree"
+                android:layout_height="fill_parent"
+                android:layout_width="fill_parent"
+                android:layout_weight="1"
+                tools:layout="@layout/fragment_one" />
+            <fragment
+                android:id="@+id/fragment5"
+                android:name="com.smusing.onemore.app.FragmentFive"
+                android:layout_height="fill_parent"
+                android:layout_width="fill_parent"
+                android:layout_weight="1"
+                tools:layout="@layout/fragment_one" />
+        </LinearLayout>
             <LinearLayout
                 android:id="@+id/ll2"
                 android:layout_row="1"
@@ -46,34 +75,6 @@
                     android:layout_weight="1"
                     tools:layout="@layout/fragment_one"  />
             </LinearLayout>
-            <LinearLayout
-                android:id="@+id/ll1"
-                android:layout_width="match_parent"
-                android:layout_height="fill_parent"
-                android:layout_weight="1"
-                android:orientation="vertical">
-                <fragment
-                    android:background="@color/CadetBlue"
-                    android:id="@+id/fragment1"
-                    android:name="com.smusing.onemore.app.FragmentOne"
-                    android:layout_height="fill_parent"
-                    android:layout_width="fill_parent"
-                    android:layout_weight="1"
-                    tools:layout="@layout/fragment_one"/>
-                <fragment
-                    android:id="@+id/fragment3"
-                    android:name="com.smusing.onemore.app.FragmentThree"
-                    android:layout_height="fill_parent"
-                    android:layout_width="fill_parent"
-                    android:layout_weight="1"
-                    tools:layout="@layout/fragment_one" />
-                <fragment
-                    android:id="@+id/fragment5"
-                    android:name="com.smusing.onemore.app.FragmentFive"
-                    android:layout_height="fill_parent"
-                    android:layout_width="fill_parent"
-                    android:layout_weight="1"
-                    tools:layout="@layout/fragment_one" />
-            </LinearLayout>
+
     </LinearLayout>
 </LinearLayout>
