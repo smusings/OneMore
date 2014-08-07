@@ -35,14 +35,23 @@ public class MainActivity extends SetupActivity{
         f6.getView().setBackgroundColor(getResources().getColor(R.color.Green));
 
 
-        //assigns clicklistener to all fragments so they know how to react.
+        //assigns longclicklistener to all fragments so they know how to react.
         //the particular listeners are all from the SetupActivity which we extend
-        f1.getView().setOnClickListener(myOneClickListener);
-        f2.getView().setOnClickListener(myTwoClickListener);
-        f3.getView().setOnClickListener(myThreeClickListener);
-        f4.getView().setOnClickListener(myFourClickListener);
-        f5.getView().setOnClickListener(myFiveClickListener);
-        f6.getView().setOnClickListener(mySixClickListener);
+        f1.getView().setOnLongClickListener(myOneClickListener);
+        f2.getView().setOnLongClickListener(myTwoClickListener);
+        f3.getView().setOnLongClickListener(myThreeClickListener);
+        f4.getView().setOnLongClickListener(myFourClickListener);
+        f5.getView().setOnLongClickListener(myFiveClickListener);
+        f6.getView().setOnLongClickListener(mySixClickListener);
+
+        //sets a clicklistener to all fragments to add one to the count
+        //without inflating the whole fragment
+        f1.getView().setOnClickListener(onClickAdd1);
+        f2.getView().setOnClickListener(onClickAdd2);
+        f3.getView().setOnClickListener(onClickAdd3);
+        f4.getView().setOnClickListener(onClickAdd4);
+        f5.getView().setOnClickListener(onClickAdd5);
+        f6.getView().setOnClickListener(onClickAdd6);
     }
 
     //sets up menu

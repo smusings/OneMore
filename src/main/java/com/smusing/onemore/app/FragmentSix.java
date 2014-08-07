@@ -94,6 +94,17 @@ public class FragmentSix extends Fragment {
         return view;
     }
 
+    //method to add one to the textview
+    //here so activities can access it
+    public void addOne(){
+        frag_count = (TextView) getView().findViewById(R.id.fragment_count);
+        int a1 = 1;
+        String value = frag_count.getText().toString();
+        int intvalue = Integer.parseInt(value);
+        int amount = intvalue + a1;
+        frag_count.setText(Integer.toString(amount));
+    }
+
 
     //method for activities to access
     //shows buttons if full screen

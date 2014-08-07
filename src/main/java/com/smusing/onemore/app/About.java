@@ -18,8 +18,8 @@ public class About extends Activity {
         //sets the text
         aboutv = (TextView) findViewById(R.id.abouttv);
         about = ("OneMore is an android mobile application developed by smusings." +
-                "\nIf you have any questions or recomendations feel to email smusings at: " +
-                "\n sleeplessmusings@gmail.com");
+                "\n\nIf you have any questions or recommendations feel to email smusings at: " +
+                "\nsleeplessmusings@gmail.com");
 
         aboutv.setText(about);
     }
