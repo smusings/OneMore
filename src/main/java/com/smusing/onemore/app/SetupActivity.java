@@ -9,14 +9,14 @@ public class SetupActivity extends FragmentActivity{
 
     //setup for activity
     FragmentManager fm=getSupportFragmentManager();
-    FragmentOne f1;
-    FragmentTwo f2;
-    FragmentThree f3;
-    FragmentFour f4;
-    FragmentFive f5;
-    FragmentSix f6;
-    LinearLayout l1;
-    LinearLayout l2;
+    public FragmentOne f1;
+    public FragmentTwo f2;
+    public FragmentThree f3;
+    public FragmentFour f4;
+    public FragmentFive f5;
+    public FragmentSix f6;
+    public LinearLayout l1;
+    public LinearLayout l2;
 
     //boolean to set up views hidden or not
     private boolean singleViewExpand=false;

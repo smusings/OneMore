@@ -16,11 +16,11 @@ public class FragmentOne extends Fragment{
     public static final String PREF_COUNT1="MyPrefsCount1";
 
     //everything we need
-    EditText frag_text;
-    TextView frag_count;
-    Button add1;
-    Button sub1;
-    Button reset;
+    public EditText frag_text;
+    public TextView frag_count;
+    public Button add1;
+    public Button sub1;
+    public Button reset;
     LinearLayout buttonl;
 
     @Override
