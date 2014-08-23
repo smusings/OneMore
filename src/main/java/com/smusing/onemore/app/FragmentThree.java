@@ -57,21 +57,6 @@ public class FragmentThree extends Fragment {
         buttonl.setVisibility(View.GONE);
 
 
-        //+1
-        add1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int a1 = 1;
-                //get the text from the textview, make it a string
-                //convert the string to an int
-                //add two ints together
-                //convert int back to string and set it to the textview
-                String value = frag_count.getText().toString();
-                int intvalue = Integer.parseInt(value);
-                int amount = intvalue + a1;
-                frag_count.setText(Integer.toString(amount));
-            }
-        });
         //-1
         sub1.setOnClickListener(new View.OnClickListener() {
             @Override

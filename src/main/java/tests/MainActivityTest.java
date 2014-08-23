@@ -44,14 +44,8 @@ public class MainActivityTest
         TextView fcount=f1.frag_count;
         Button bplus1=f1.add1;
 
-        int a1 = 1;
-        String value = fcount.getText().toString();
-        int intvalue = Integer.parseInt(value);
-        int amount = intvalue + a1;
-        String expected=Integer.toString(amount);
-
         TouchUtils.clickView(this, bplus1);
         assertTrue(View.VISIBLE==fcount.getVisibility());
-        assertEquals(expected, fcount.getText());
+        assertEquals("1", fcount.getText());
     }
 }
