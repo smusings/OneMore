@@ -16,11 +16,11 @@ public class FragmentSix extends Fragment {
     public static final String PREF_COUNT6="MyPrefsCount6";
 
     //everything we need
-    EditText frag_text;
-    TextView frag_count;
-    Button add1;
-    Button sub1;
-    Button reset;
+    public EditText frag_text;
+    public TextView frag_count;
+    public Button add1;
+    public Button sub1;
+    public Button reset;
     LinearLayout buttonl;
 
     @Override
@@ -54,9 +54,21 @@ public class FragmentSix extends Fragment {
 
         //automatically hides buttons
         buttonl.setVisibility(View.GONE);
-
-
-
+        //+1
+        add1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int a1 = 1;
+                //get the text from the textview, make it a string
+                //convert the string to an int
+                //add two ints together
+                //convert int back to string and set it to the textview
+                String value = frag_count.getText().toString();
+                int intvalue = Integer.parseInt(value);
+                int amount = intvalue + a1;
+                frag_count.setText(Integer.toString(amount));
+            }
+        });
         //-1
         sub1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,7 +102,6 @@ public class FragmentSix extends Fragment {
         int amount = intvalue + a1;
         frag_count.setText(Integer.toString(amount));
     }
-
 
     //method for activities to access
     //shows buttons if full screen

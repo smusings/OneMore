@@ -45,7 +45,7 @@ public class SetupActivity extends FragmentActivity{
                 f1.showButtons();
                 singleViewExpand=true;
             }
-            return false;
+            return true;
         }
     };
 
@@ -72,7 +72,7 @@ public class SetupActivity extends FragmentActivity{
                 f2.showButtons();
                 singleViewExpand=true;
             }
-            return false;
+            return true;
         }
     };
 
@@ -99,7 +99,7 @@ public class SetupActivity extends FragmentActivity{
                 f3.showButtons();
                 singleViewExpand=true;
             }
-            return false;
+            return true;
         }
     };
 
@@ -126,7 +126,7 @@ public class SetupActivity extends FragmentActivity{
                 f4.showButtons();
                 singleViewExpand=true;
             }
-            return false;
+            return true;
         }
     };
     public View.OnLongClickListener myFiveClickListener=new View.OnLongClickListener() {
@@ -152,7 +152,7 @@ public class SetupActivity extends FragmentActivity{
                 f5.showButtons();
                 singleViewExpand=true;
             }
-            return false;
+            return true;
         }
     };
     public View.OnLongClickListener mySixClickListener=new View.OnLongClickListener() {
@@ -178,7 +178,7 @@ public class SetupActivity extends FragmentActivity{
                 f6.showButtons();
                 singleViewExpand=true;
             }
-            return false;
+            return true;
         }
     };
 
