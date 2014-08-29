@@ -4,6 +4,7 @@ import android.test.ActivityInstrumentationTestCase2;
 import android.test.TouchUtils;
 import android.test.suitebuilder.annotation.MediumTest;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.smusing.onemore.app.FragmentOne;
@@ -102,5 +103,20 @@ public class MainActivityTest
 
         TouchUtils.clickView(this, breset);
         assertEquals("0", fcount.getText());
+    }
+
+    @MediumTest
+    public void testEditText(){
+        getInstrumentation().runOnMainSync(new Runnable() {
+            @Override
+            public void run() {
+                EditText f1editText=f1.frag_text;
+                f1editText.requestFocus();
+            }
+        });
+        getInstrumentation().waitForIdleSync();
+        getInstrumentation().sendStringSync("Testing 1 2 3");
+        getInstrumentation().waitForIdleSync();
+
     }
 }
