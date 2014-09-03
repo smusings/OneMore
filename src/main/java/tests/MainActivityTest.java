@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.smusing.onemore.app.FragmentOne;
 import com.smusing.onemore.app.MainActivity;
+import com.smusing.onemore.app.R;
 
 public class MainActivityTest
         extends ActivityInstrumentationTestCase2<MainActivity> {
@@ -29,7 +30,8 @@ public class MainActivityTest
         setActivityInitialTouchMode(true);
 
         mMainActivity=getActivity();
-        f1=mMainActivity.f1;
+        f1=(FragmentOne)mMainActivity.getSupportFragmentManager().findFragmentById(R.id.fragment1);
+
     }
 
     //checks to see if anything is null
@@ -39,16 +41,10 @@ public class MainActivityTest
     }
 
     /*
-    All of the tests below fail
-    I have a theory that while clickview may click the button
-    it does not necessarily also see the onclicklistener
-    so while the button is pressed
-    it just does nothing
-
-    I think one work around would be to set a method via xml
-    however i tried that and kept getting errors in the method not being
-    in MainActivity
-     */
+        the long clickview will extend the fragment to the whole screen
+        the buttons will appear
+        then and only then are they clickable!
+    */
 
     @MediumTest
     public void testPlusOneTap(){
@@ -77,7 +73,9 @@ public class MainActivityTest
         String expected=Integer.toString(amount);
 
 
+        TouchUtils.longClickView(this, fcount);
         TouchUtils.clickView(this, bplus1);
+        TouchUtils.longClickView(this, fcount);
         assertEquals(expected, fcount.getText());
     }
 
@@ -86,13 +84,14 @@ public class MainActivityTest
         TextView fcount=f1.frag_count;
         Button bminus1=f1.sub1;
 
-        int n=-1;
         String value = fcount.getText().toString();
         int intvalue = Integer.parseInt(value);
-        int amount = intvalue + n;
+        int amount = intvalue - 1;
         String expected=Integer.toString(amount);
 
+        TouchUtils.longClickView(this, fcount);
         TouchUtils.clickView(this, bminus1);
+        TouchUtils.longClickView(this, fcount);
         assertEquals(expected, fcount.getText());
     }
 
@@ -101,7 +100,10 @@ public class MainActivityTest
         TextView fcount=f1.frag_count;
         Button breset=f1.reset;
 
+
+        TouchUtils.longClickView(this, fcount);
         TouchUtils.clickView(this, breset);
+        TouchUtils.longClickView(this, fcount);
         assertEquals("0", fcount.getText());
     }
 
@@ -117,6 +119,5 @@ public class MainActivityTest
         getInstrumentation().waitForIdleSync();
         getInstrumentation().sendStringSync("Testing 1 2 3");
         getInstrumentation().waitForIdleSync();
-
     }
 }
