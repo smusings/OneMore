@@ -29,8 +29,8 @@ public class MainActivityTest
 
         setActivityInitialTouchMode(true);
 
-        mMainActivity=getActivity();
-        f1=(FragmentOne)mMainActivity.getSupportFragmentManager().findFragmentById(R.id.fragment1);
+        mMainActivity = getActivity();
+        f1 = (FragmentOne)mMainActivity.getSupportFragmentManager().findFragmentById(R.id.fragment1);
 
     }
 
@@ -48,13 +48,12 @@ public class MainActivityTest
 
     @MediumTest
     public void testPlusOneTap(){
-        TextView fcount=f1.frag_count;
+        TextView fcount = f1.frag_count;
 
-        int n=1;
         String value = fcount.getText().toString();
         int intvalue = Integer.parseInt(value);
-        int amount = intvalue + n;
-        String expected=Integer.toString(amount);
+        int amount = intvalue + 1;
+        String expected = Integer.toString(amount);
 
         TouchUtils.clickView(this, f1.getView());
         assertEquals(expected, fcount.getText());
@@ -63,14 +62,14 @@ public class MainActivityTest
 
     @MediumTest
     public void testPlusOne(){
-        TextView fcount=f1.frag_count;
-        Button bplus1=f1.add1;
+        TextView fcount = f1.frag_count;
+        Button bplus1 = f1.add1;
 
-        int n=1;
+
         String value = fcount.getText().toString();
         int intvalue = Integer.parseInt(value);
-        int amount = intvalue + n;
-        String expected=Integer.toString(amount);
+        int amount = intvalue + 1;
+        String expected = Integer.toString(amount);
 
 
         TouchUtils.longClickView(this, fcount);
@@ -81,13 +80,13 @@ public class MainActivityTest
 
     @MediumTest
     public void testMinusOne(){
-        TextView fcount=f1.frag_count;
-        Button bminus1=f1.sub1;
+        TextView fcount = f1.frag_count;
+        Button bminus1 = f1.sub1;
 
         String value = fcount.getText().toString();
         int intvalue = Integer.parseInt(value);
         int amount = intvalue - 1;
-        String expected=Integer.toString(amount);
+        String expected = Integer.toString(amount);
 
         TouchUtils.longClickView(this, fcount);
         TouchUtils.clickView(this, bminus1);
@@ -97,8 +96,8 @@ public class MainActivityTest
 
     @MediumTest
     public void testReset(){
-        TextView fcount=f1.frag_count;
-        Button breset=f1.reset;
+        TextView fcount = f1.frag_count;
+        Button breset = f1.reset;
 
 
         TouchUtils.longClickView(this, fcount);
@@ -112,7 +111,7 @@ public class MainActivityTest
         getInstrumentation().runOnMainSync(new Runnable() {
             @Override
             public void run() {
-                EditText f1editText=f1.frag_text;
+                EditText f1editText = f1.frag_text;
                 f1editText.requestFocus();
             }
         });

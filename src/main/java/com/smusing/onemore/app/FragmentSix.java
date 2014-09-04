@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 public class FragmentSix extends Fragment {
 
-    public static final String PREF_COUNT6="MyPrefsCount6";
+    public static final String PREF_COUNT6 = "MyPrefsCount6";
 
     //everything we need
     public EditText frag_text;
@@ -30,9 +30,9 @@ public class FragmentSix extends Fragment {
         frag_text = (EditText) getView().findViewById(R.id.fragment_text);
         frag_count = (TextView) getView().findViewById(R.id.fragment_count);
         //gets the string from sharedpreferences and puts it back
-        SharedPreferences pref=getActivity().getSharedPreferences(PREF_COUNT6, 0);
-        String count1=pref.getString("count", "0");
-        String id=pref.getString("article", "");
+        SharedPreferences pref = getActivity().getSharedPreferences(PREF_COUNT6, 0);
+        String count1 = pref.getString("count", "0");
+        String id = pref.getString("article", "");
         frag_count.setText(count1);
         frag_text.setText(id);
     }
@@ -47,10 +47,10 @@ public class FragmentSix extends Fragment {
         //setup to use
         frag_text = (EditText) view.findViewById(R.id.fragment_text);
         frag_count = (TextView) view.findViewById(R.id.fragment_count);
-        add1=(Button)view.findViewById(R.id.btn_plus_one);
-        sub1=(Button)view.findViewById(R.id.btn_minus_one);
-        reset=(Button)view.findViewById(R.id.btn_reset);
-        buttonl=(LinearLayout)view.findViewById(R.id.button_layout);
+        add1 = (Button)view.findViewById(R.id.btn_plus_one);
+        sub1 = (Button)view.findViewById(R.id.btn_minus_one);
+        reset = (Button)view.findViewById(R.id.btn_reset);
+        buttonl = (LinearLayout)view.findViewById(R.id.button_layout);
 
         //automatically hides buttons
         buttonl.setVisibility(View.GONE);
@@ -106,14 +106,14 @@ public class FragmentSix extends Fragment {
     //method for activities to access
     //shows buttons if full screen
     public void showButtons(){
-        buttonl=(LinearLayout)getView().findViewById(R.id.button_layout);
+        buttonl = (LinearLayout)getView().findViewById(R.id.button_layout);
         buttonl.setVisibility(View.VISIBLE);
     }
 
     //method for activities to access
     //hides buttons if full screen
     public void hideButtons(){
-        buttonl=(LinearLayout)getView().findViewById(R.id.button_layout);
+        buttonl = (LinearLayout)getView().findViewById(R.id.button_layout);
         buttonl.setVisibility(View.GONE);
     }
 
@@ -135,8 +135,8 @@ public class FragmentSix extends Fragment {
 
         //make the SharedPReference and set it up
         //we also make an editor, add our variable to it and commit
-        SharedPreferences pref=getActivity().getSharedPreferences(PREF_COUNT6, 0);
-        SharedPreferences.Editor edt=pref.edit();
+        SharedPreferences pref = getActivity().getSharedPreferences(PREF_COUNT6, 0);
+        SharedPreferences.Editor edt = pref.edit();
         edt.putString("count", frag_count.getText().toString());
         edt.putString("article", frag_text.getText().toString());
 
