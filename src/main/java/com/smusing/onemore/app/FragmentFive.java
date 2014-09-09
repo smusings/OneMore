@@ -58,14 +58,13 @@ public class FragmentFive extends Fragment {
         add1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int a1 = 1;
                 //get the text from the textview, make it a string
                 //convert the string to an int
                 //add two ints together
                 //convert int back to string and set it to the textview
                 String value = frag_count.getText().toString();
                 int intvalue = Integer.parseInt(value);
-                int amount = intvalue + a1;
+                int amount = intvalue + 1;
                 frag_count.setText(Integer.toString(amount));
             }
         });
@@ -73,10 +72,9 @@ public class FragmentFive extends Fragment {
         sub1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int a1 = -1;
                 String value = frag_count.getText().toString();
                 int intvalue = Integer.parseInt(value);
-                int amount = intvalue + a1;
+                int amount = intvalue - 1;
                 frag_count.setText(Integer.toString(amount));
             }
         });
@@ -96,10 +94,9 @@ public class FragmentFive extends Fragment {
     //here so activities can access it
     public void addOne(){
         frag_count = (TextView) getView().findViewById(R.id.fragment_count);
-        int a1 = 1;
         String value = frag_count.getText().toString();
         int intvalue = Integer.parseInt(value);
-        int amount = intvalue + a1;
+        int amount = intvalue + 1;
         frag_count.setText(Integer.toString(amount));
     }
 
