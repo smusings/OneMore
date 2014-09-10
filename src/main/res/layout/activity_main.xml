@@ -10,7 +10,7 @@
         android:text="One More ..."
         android:background="@color/Orange"
         android:textColor="@color/White"
-        android:textSize="30dp"
+        android:textSize="30sp"
         android:gravity="center"/>
     <LinearLayout
         android:id="@+id/frag_layout"
@@ -48,7 +48,6 @@
         </LinearLayout>
             <LinearLayout
                 android:id="@+id/ll2"
-                android:layout_row="1"
                 android:layout_width="match_parent"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
