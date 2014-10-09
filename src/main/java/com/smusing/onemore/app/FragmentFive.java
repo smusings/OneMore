@@ -13,28 +13,26 @@ import android.widget.TextView;
 
 public class FragmentFive extends Fragment {
 
-    public static final String PREF_COUNT5 = "MyPrefsCount5";
+    public static final String PREF_COUNT_5 = "MyPrefsCount5";
 
     //everything we need
-    public EditText frag_text;
-    public TextView frag_count;
+    public EditText itemLabel_et;
+    public TextView itemCount_tv;
     public Button add1;
     public Button sub1;
     public Button reset;
-    LinearLayout buttonl;
+    LinearLayout button_layout;
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState){
         super.onActivityCreated(savedInstanceState);
 
-        frag_text = (EditText) getView().findViewById(R.id.fragment_text);
-        frag_count = (TextView) getView().findViewById(R.id.fragment_count);
         //gets the string from sharedpreferences and puts it back
-        SharedPreferences pref = getActivity().getSharedPreferences(PREF_COUNT5, 0);
+        SharedPreferences pref = getActivity().getSharedPreferences(PREF_COUNT_5, 0);
         String count1 = pref.getString("count", "0");
         String id = pref.getString("article", "");
-        frag_count.setText(count1);
-        frag_text.setText(id);
+        itemLabel_et.setText(count1);
+        itemCount_tv.setText(id);
     }
 
     @Override
@@ -44,98 +42,81 @@ public class FragmentFive extends Fragment {
         //inflates the xml layout
         View view = inflater.inflate(R.layout.fragment_one, container, false);
 
-        //setup to use
-        frag_text = (EditText) view.findViewById(R.id.fragment_text);
-        frag_count = (TextView) view.findViewById(R.id.fragment_count);
-        add1 = (Button)view.findViewById(R.id.btn_plus_one);
-        sub1 = (Button)view.findViewById(R.id.btn_minus_one);
-        reset = (Button)view.findViewById(R.id.btn_reset);
-        buttonl = (LinearLayout)view.findViewById(R.id.button_layout);
+        //setup to useitem
+        itemLabel_et = (EditText) view.findViewById(R.id.item_label_text);
+        itemCount_tv = (TextView) view.findViewById(R.id.item_count_text);
+        add1 = (Button)view.findViewById(R.id.plus_one_button);
+        sub1 = (Button)view.findViewById(R.id.minus_one_button);
+        reset = (Button)view.findViewById(R.id.reset_button);
+        button_layout = (LinearLayout)view.findViewById(R.id.button_layout);
 
         //automatically hides buttons
-        buttonl.setVisibility(View.GONE);
+        button_layout.setVisibility(View.GONE);
         //+1
         add1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //get the text from the textview, make it a string
-                //convert the string to an int
-                //add two ints together
-                //convert int back to string and set it to the textview
-                String value = frag_count.getText().toString();
-                int intvalue = Integer.parseInt(value);
-                int amount = intvalue + 1;
-                frag_count.setText(Integer.toString(amount));
+                addOne();
             }
         });
         //-1
         sub1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String value = frag_count.getText().toString();
-                int intvalue = Integer.parseInt(value);
+                int intvalue = Integer.parseInt(itemCount_tv.getText().toString());
                 int amount = intvalue - 1;
-                frag_count.setText(Integer.toString(amount));
+                itemCount_tv.setText(Integer.toString(amount));
             }
         });
         //0
         reset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                frag_count.setText("0");
+                itemCount_tv.setText("0");
             }
         });
-
 
         return view;
     }
 
-    //method to add one to the textview
-    //here so activities can access it
+    //get the text from the textview, make it a string
+    //convert the string to an int
+    //add two ints together
+    //convert int back to string and set it to the textview
     public void addOne(){
-        frag_count = (TextView) getView().findViewById(R.id.fragment_count);
-        String value = frag_count.getText().toString();
-        int intvalue = Integer.parseInt(value);
+        int intvalue = Integer.parseInt(itemCount_tv.getText().toString());
         int amount = intvalue + 1;
-        frag_count.setText(Integer.toString(amount));
+        itemCount_tv.setText(Integer.toString(amount));
     }
 
     //method for activities to access
     //shows buttons if full screen
     public void showButtons(){
-        buttonl = (LinearLayout)getView().findViewById(R.id.button_layout);
-        buttonl.setVisibility(View.VISIBLE);
+        button_layout.setVisibility(View.VISIBLE);
     }
 
     //method for activities to access
     //hides buttons if full screen
     public void hideButtons(){
-        buttonl = (LinearLayout)getView().findViewById(R.id.button_layout);
-        buttonl.setVisibility(View.GONE);
+        button_layout.setVisibility(View.GONE);
     }
 
     //method for activities to access
     //resets the count to 0 on the activity
     public void resetCount(){
-        frag_count = (TextView) getView().findViewById(R.id.fragment_count);
-        frag_text = (EditText) getView().findViewById(R.id.fragment_text);
-        frag_text.setText("");
-        frag_count.setText("0");
+        itemLabel_et.setText("");
+        itemCount_tv.setText("0");
     }
 
     @Override
     public void onPause(){
         super.onPause();
-        //Get the textview so we can get the text from it
-        frag_text = (EditText) getView().findViewById(R.id.fragment_text);
-        frag_count = (TextView) getView().findViewById(R.id.fragment_count);
-
         //make the SharedPReference and set it up
         //we also make an editor, add our variable to it and commit
-        SharedPreferences pref = getActivity().getSharedPreferences(PREF_COUNT5, 0);
+        SharedPreferences pref = getActivity().getSharedPreferences(PREF_COUNT_5, 0);
         SharedPreferences.Editor edt = pref.edit();
-        edt.putString("count", frag_count.getText().toString());
-        edt.putString("article", frag_text.getText().toString());
+        edt.putString("count", itemCount_tv.getText().toString());
+        edt.putString("article", itemLabel_et.getText().toString());
 
         //commit the edits
         edt.commit();

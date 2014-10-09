@@ -11,23 +11,23 @@ import android.widget.RemoteViews;
 public class MyWidgetProvider extends AppWidgetProvider{
 
 
-    public static final String PREF_COUNT1 = "MyPrefsCount1";
-    public static final String PREF_COUNT2 = "MyPrefsCount2";
-    public static final String PREF_COUNT3 = "MyPrefsCount3";
-    public static final String PREF_COUNT4 = "MyPrefsCount4";
-    public static final String PREF_COUNT5 = "MyPrefsCount5";
-    public static final String PREF_COUNT6 = "MyPrefsCount6";
+    public static final String PREF_COUNT_1 = "MyPrefsCount1";
+    public static final String PREF_COUNT_2 = "MyPrefsCount2";
+    public static final String PREF_COUNT_3 = "MyPrefsCount3";
+    public static final String PREF_COUNT_4 = "MyPrefsCount4";
+    public static final String PREF_COUNT_5 = "MyPrefsCount5";
+    public static final String PREF_COUNT_6 = "MyPrefsCount6";
 
 
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds){
 
         //get the shared Preference from each Fragment
-        SharedPreferences pref1 = context.getSharedPreferences(PREF_COUNT1, 0);
-        SharedPreferences pref2 = context.getSharedPreferences(PREF_COUNT2, 0);
-        SharedPreferences pref3 = context.getSharedPreferences(PREF_COUNT3, 0);
-        SharedPreferences pref4 = context.getSharedPreferences(PREF_COUNT4, 0);
-        SharedPreferences pref5 = context.getSharedPreferences(PREF_COUNT5, 0);
-        SharedPreferences pref6 = context.getSharedPreferences(PREF_COUNT6, 0);
+        SharedPreferences pref1 = context.getSharedPreferences(PREF_COUNT_1, 0);
+        SharedPreferences pref2 = context.getSharedPreferences(PREF_COUNT_2, 0);
+        SharedPreferences pref3 = context.getSharedPreferences(PREF_COUNT_3, 0);
+        SharedPreferences pref4 = context.getSharedPreferences(PREF_COUNT_4, 0);
+        SharedPreferences pref5 = context.getSharedPreferences(PREF_COUNT_5, 0);
+        SharedPreferences pref6 = context.getSharedPreferences(PREF_COUNT_6, 0);
 
 
         final int N = appWidgetIds.length;

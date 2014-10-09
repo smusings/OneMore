@@ -49,6 +49,35 @@ public class SetupActivity extends FragmentActivity{
         }
     };
 
+    public View.OnLongClickListener myClickListener = new View.OnLongClickListener() {
+        @Override
+        public boolean onLongClick(View v) {
+            f1 = (FragmentOne)getSupportFragmentManager().findFragmentById(R.id.fragment1);
+            // if a view is fullscreen, on click shows all views instead
+            if(singleViewExpand){
+                showAllViews();
+                f1.hideButtons();
+                singleViewExpand = false;
+            } else {
+                //if a view is not fullscreen, hides all views then expands the one you clicked on.
+                fm.beginTransaction()
+                        .show(f1)
+                        .hide(f2)
+                        .hide(f3)
+                        .hide(f4)
+                        .hide(f5)
+                        .hide(f6)
+                        .commit();
+                l2.setVisibility(View.GONE);
+                f1.showButtons();
+                singleViewExpand = true;
+            }
+            return true;
+        }
+    };
+
+
+
     public View.OnLongClickListener myTwoClickListener = new View.OnLongClickListener() {
         @Override
         public boolean onLongClick(View v) {

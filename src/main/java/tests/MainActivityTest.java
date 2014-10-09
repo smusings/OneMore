@@ -48,7 +48,7 @@ public class MainActivityTest
 
     @MediumTest
     public void testPlusOneTap(){
-        TextView fcount = f1.frag_count;
+        TextView fcount = f1.itemCount_tv;
 
         String value = fcount.getText().toString();
         int intvalue = Integer.parseInt(value);
@@ -62,7 +62,7 @@ public class MainActivityTest
 
     @MediumTest
     public void testPlusOne(){
-        TextView fcount = f1.frag_count;
+        TextView fcount = f1.itemCount_tv;
         Button bplus1 = f1.add1;
 
 
@@ -80,7 +80,7 @@ public class MainActivityTest
 
     @MediumTest
     public void testMinusOne(){
-        TextView fcount = f1.frag_count;
+        TextView fcount = f1.itemCount_tv;
         Button bminus1 = f1.sub1;
 
         String value = fcount.getText().toString();
@@ -96,7 +96,7 @@ public class MainActivityTest
 
     @MediumTest
     public void testReset(){
-        TextView fcount = f1.frag_count;
+        TextView fcount = f1.itemCount_tv;
         Button breset = f1.reset;
 
 
@@ -111,7 +111,7 @@ public class MainActivityTest
         getInstrumentation().runOnMainSync(new Runnable() {
             @Override
             public void run() {
-                EditText f1editText = f1.frag_text;
+                EditText f1editText = f1.itemLabel_et;
                 f1editText.requestFocus();
             }
         });

@@ -1,6 +1,5 @@
 package com.smusing.onemore.app;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -74,11 +73,6 @@ public class MainActivity extends SetupActivity{
             f5.resetCount();
             f6.resetCount();
             return true;
-        }
-        if (id == R.id.action_about) {
-            //opens up a new activity that will take us to the about page
-            Intent intent = new Intent(this, About.class);
-            startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
     }
