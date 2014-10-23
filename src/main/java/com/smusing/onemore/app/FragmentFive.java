@@ -31,8 +31,8 @@ public class FragmentFive extends Fragment {
         SharedPreferences pref = getActivity().getSharedPreferences(PREF_COUNT_5, 0);
         String count1 = pref.getString("count", "0");
         String id = pref.getString("article", "");
-        itemLabel_et.setText(count1);
-        itemCount_tv.setText(id);
+        itemLabel_et.setText(id);
+        itemCount_tv.setText(count1);
     }
 
     @Override

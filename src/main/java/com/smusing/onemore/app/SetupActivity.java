@@ -1,5 +1,6 @@
 package com.smusing.onemore.app;
 
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.view.View;
@@ -21,6 +22,19 @@ public class SetupActivity extends FragmentActivity{
     //boolean to set up views hidden or not
     private boolean singleViewExpand = false;
 
+    public void hide(Fragment fragment){
+        fm.beginTransaction()
+                .hide(f1)
+                .hide(f2)
+                .hide(f3)
+                .hide(f4)
+                .hide(f5)
+                .hide(f6)
+                .show(fragment)
+                .commit();
+        singleViewExpand = true;
+    }
+
     //onlongclick listener to hide and show fragments.
     public View.OnLongClickListener myOneClickListener = new View.OnLongClickListener() {
         @Override
@@ -33,50 +47,13 @@ public class SetupActivity extends FragmentActivity{
                 singleViewExpand = false;
             } else {
                 //if a view is not fullscreen, hides all views then expands the one you clicked on.
-                fm.beginTransaction()
-                        .show(f1)
-                        .hide(f2)
-                        .hide(f3)
-                        .hide(f4)
-                        .hide(f5)
-                        .hide(f6)
-                        .commit();
+               hide(f1);
                 l2.setVisibility(View.GONE);
                 f1.showButtons();
-                singleViewExpand = true;
             }
             return true;
         }
     };
-
-    public View.OnLongClickListener myClickListener = new View.OnLongClickListener() {
-        @Override
-        public boolean onLongClick(View v) {
-            f1 = (FragmentOne)getSupportFragmentManager().findFragmentById(R.id.fragment1);
-            // if a view is fullscreen, on click shows all views instead
-            if(singleViewExpand){
-                showAllViews();
-                f1.hideButtons();
-                singleViewExpand = false;
-            } else {
-                //if a view is not fullscreen, hides all views then expands the one you clicked on.
-                fm.beginTransaction()
-                        .show(f1)
-                        .hide(f2)
-                        .hide(f3)
-                        .hide(f4)
-                        .hide(f5)
-                        .hide(f6)
-                        .commit();
-                l2.setVisibility(View.GONE);
-                f1.showButtons();
-                singleViewExpand = true;
-            }
-            return true;
-        }
-    };
-
-
 
     public View.OnLongClickListener myTwoClickListener = new View.OnLongClickListener() {
         @Override
@@ -86,20 +63,11 @@ public class SetupActivity extends FragmentActivity{
             if(singleViewExpand){
                 showAllViews();
                 f2.hideButtons();
-                singleViewExpand = false;
             }else{
                 //if a view is not fullscreen, hides all views then expands the one you clicked on.
-                fm.beginTransaction()
-                        .hide(f1)
-                        .show(f2)
-                        .hide(f3)
-                        .hide(f4)
-                        .hide(f5)
-                        .hide(f6)
-                        .commit();
+                hide(f2);
                 l1.setVisibility(View.GONE);
                 f2.showButtons();
-                singleViewExpand = true;
             }
             return true;
         }
@@ -116,17 +84,9 @@ public class SetupActivity extends FragmentActivity{
                 singleViewExpand = false;
             } else {
                 //if a view is not fullscreen, hides all views then expands the one you clicked on.
-                fm.beginTransaction()
-                        .hide(f1)
-                        .hide(f2)
-                        .show(f3)
-                        .hide(f4)
-                        .hide(f5)
-                        .hide(f6)
-                        .commit();
+                hide(f3);
                 l2.setVisibility(View.GONE);
                 f3.showButtons();
-                singleViewExpand = true;
             }
             return true;
         }
@@ -143,17 +103,9 @@ public class SetupActivity extends FragmentActivity{
                 singleViewExpand = false;
             } else {
                 //if a view is not fullscreen, hides all views then expands the one you clicked on.
-                fm.beginTransaction()
-                        .hide(f1)
-                        .hide(f2)
-                        .hide(f3)
-                        .show(f4)
-                        .hide(f5)
-                        .hide(f6)
-                        .commit();
+                hide(f4);
                 l1.setVisibility(View.GONE);
                 f4.showButtons();
-                singleViewExpand = true;
             }
             return true;
         }
@@ -169,17 +121,9 @@ public class SetupActivity extends FragmentActivity{
                 singleViewExpand = false;
             } else {
                 //if a view is not fullscreen, hides all views then expands the one you clicked on.
-                fm.beginTransaction()
-                        .hide(f1)
-                        .hide(f2)
-                        .hide(f3)
-                        .hide(f4)
-                        .show(f5)
-                        .hide(f6)
-                        .commit();
+                hide(f5);
                 l2.setVisibility(View.GONE);
                 f5.showButtons();
-                singleViewExpand = true;
             }
             return true;
         }
@@ -195,17 +139,9 @@ public class SetupActivity extends FragmentActivity{
                 singleViewExpand = false;
             } else {
                 //if a view is not fullscreen, hides all views then expands the one you clicked on.
-                fm.beginTransaction()
-                        .hide(f1)
-                        .hide(f2)
-                        .hide(f3)
-                        .hide(f4)
-                        .hide(f5)
-                        .show(f6)
-                        .commit();
+                hide(f6);
                 l1.setVisibility(View.GONE);
                 f6.showButtons();
-                singleViewExpand = true;
             }
             return true;
         }
@@ -236,7 +172,6 @@ public class SetupActivity extends FragmentActivity{
     };
 
     public View.OnClickListener onClickAdd2 = new View.OnClickListener(){
-
         @Override
         public void onClick(View v) {
             f2.addOne();
