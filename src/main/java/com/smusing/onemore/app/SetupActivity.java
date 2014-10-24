@@ -147,7 +147,6 @@ public class SetupActivity extends FragmentActivity{
         }
     };
 
-
     //defines a method to hide all views
     private void showAllViews(){
         fm.beginTransaction()
@@ -164,7 +163,6 @@ public class SetupActivity extends FragmentActivity{
 
     //onclicklisteners to add one one
     public View.OnClickListener onClickAdd1 = new View.OnClickListener(){
-
         @Override
         public void onClick(View v) {
             f1.addOne();
@@ -179,7 +177,6 @@ public class SetupActivity extends FragmentActivity{
     };
 
     public View.OnClickListener onClickAdd3 = new View.OnClickListener(){
-
         @Override
         public void onClick(View v) {
             f3.addOne();
@@ -187,7 +184,6 @@ public class SetupActivity extends FragmentActivity{
     };
 
     public View.OnClickListener onClickAdd4 = new View.OnClickListener(){
-
         @Override
         public void onClick(View v) {
             f4.addOne();
@@ -195,7 +191,6 @@ public class SetupActivity extends FragmentActivity{
     };
 
     public View.OnClickListener onClickAdd5 = new View.OnClickListener(){
-
         @Override
         public void onClick(View v) {
             f5.addOne();
@@ -203,7 +198,6 @@ public class SetupActivity extends FragmentActivity{
     };
 
     public View.OnClickListener onClickAdd6 = new View.OnClickListener(){
-
         @Override
         public void onClick(View v) {
             f6.addOne();
