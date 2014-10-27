@@ -18,12 +18,12 @@ public class MainActivity extends SetupActivity{
         l2 = (LinearLayout)findViewById(R.id.ll2);
 
         //assigns values to all fragments
-        f1 = (FragmentOne)getSupportFragmentManager().findFragmentById(R.id.fragment1);
-        f2 = (FragmentTwo)getSupportFragmentManager().findFragmentById(R.id.fragment2);
-        f3 = (FragmentThree)getSupportFragmentManager().findFragmentById(R.id.fragment3);
-        f4 = (FragmentFour)getSupportFragmentManager().findFragmentById(R.id.fragment4);
-        f5 = (FragmentFive)getSupportFragmentManager().findFragmentById(R.id.fragment5);
-        f6 = (FragmentSix)getSupportFragmentManager().findFragmentById(R.id.fragment6);
+        f1 = (FragmentOne)getFragmentManager().findFragmentById(R.id.fragment1);
+        f2 = (FragmentTwo)getFragmentManager().findFragmentById(R.id.fragment2);
+        f3 = (FragmentThree)getFragmentManager().findFragmentById(R.id.fragment3);
+        f4 = (FragmentFour)getFragmentManager().findFragmentById(R.id.fragment4);
+        f5 = (FragmentFive)getFragmentManager().findFragmentById(R.id.fragment5);
+        f6 = (FragmentSix)getFragmentManager().findFragmentById(R.id.fragment6);
 
         //set background color for each fragment
         f1.getView().setBackgroundColor(getResources().getColor(R.color.CadetBlue));

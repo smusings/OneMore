@@ -1,15 +1,15 @@
 package com.smusing.onemore.app;
 
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
+import android.app.Activity;
+import android.app.Fragment;
+import android.app.FragmentManager;
 import android.view.View;
 import android.widget.LinearLayout;
 
-public class SetupActivity extends FragmentActivity{
+public class SetupActivity extends Activity {
 
     //setup for activity
-    FragmentManager fm = getSupportFragmentManager();
+    FragmentManager fm = getFragmentManager();
     public FragmentOne f1;
     public FragmentTwo f2;
     public FragmentThree f3;
@@ -39,7 +39,7 @@ public class SetupActivity extends FragmentActivity{
     public View.OnLongClickListener myOneClickListener = new View.OnLongClickListener() {
         @Override
         public boolean onLongClick(View v) {
-            f1 = (FragmentOne)getSupportFragmentManager().findFragmentById(R.id.fragment1);
+            f1 = (FragmentOne)getFragmentManager().findFragmentById(R.id.fragment1);
             // if a view is fullscreen, on click shows all views instead
             if(singleViewExpand){
                 showAllViews();
@@ -58,7 +58,7 @@ public class SetupActivity extends FragmentActivity{
     public View.OnLongClickListener myTwoClickListener = new View.OnLongClickListener() {
         @Override
         public boolean onLongClick(View v) {
-            f2 = (FragmentTwo)getSupportFragmentManager().findFragmentById(R.id.fragment2);
+            f2 = (FragmentTwo)getFragmentManager().findFragmentById(R.id.fragment2);
             // if a view is fullscreen, on click shows all views instead
             if(singleViewExpand){
                 showAllViews();
@@ -76,7 +76,7 @@ public class SetupActivity extends FragmentActivity{
     public View.OnLongClickListener myThreeClickListener = new View.OnLongClickListener() {
         @Override
         public boolean onLongClick(View v) {
-            f3 = (FragmentThree)getSupportFragmentManager().findFragmentById(R.id.fragment3);
+            f3 = (FragmentThree)getFragmentManager().findFragmentById(R.id.fragment3);
             // if a view is fullscreen, on click shows all views instead
             if(singleViewExpand){
                 showAllViews();
@@ -95,7 +95,7 @@ public class SetupActivity extends FragmentActivity{
     public View.OnLongClickListener myFourClickListener = new View.OnLongClickListener() {
         @Override
         public boolean onLongClick(View v) {
-            f4 = (FragmentFour)getSupportFragmentManager().findFragmentById(R.id.fragment4);
+            f4 = (FragmentFour)getFragmentManager().findFragmentById(R.id.fragment4);
             // if a view is fullscreen, on click shows all views instead
             if(singleViewExpand){
                 showAllViews();
@@ -113,7 +113,7 @@ public class SetupActivity extends FragmentActivity{
     public View.OnLongClickListener myFiveClickListener = new View.OnLongClickListener() {
         @Override
         public boolean onLongClick(View v) {
-            f5 = (FragmentFive)getSupportFragmentManager().findFragmentById(R.id.fragment5);
+            f5 = (FragmentFive)getFragmentManager().findFragmentById(R.id.fragment5);
             // if a view is fullscreen, on click shows all views instead
             if(singleViewExpand){
                 showAllViews();
@@ -131,7 +131,7 @@ public class SetupActivity extends FragmentActivity{
     public View.OnLongClickListener mySixClickListener = new View.OnLongClickListener() {
         @Override
         public boolean onLongClick(View v) {
-            f6 = (FragmentSix)getSupportFragmentManager().findFragmentById(R.id.fragment6);
+            f6 = (FragmentSix)getFragmentManager().findFragmentById(R.id.fragment6);
             // if a view is fullscreen, on click shows all views instead
             if(singleViewExpand){
                 showAllViews();
