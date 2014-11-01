@@ -30,7 +30,7 @@ public class MainActivityTest
         setActivityInitialTouchMode(true);
 
         mMainActivity = getActivity();
-        f1 = (FragmentOne)mMainActivity.getSupportFragmentManager().findFragmentById(R.id.fragment1);
+        f1 = (FragmentOne)mMainActivity.getFragmentManager().findFragmentById(R.id.fragment1);
 
     }
 

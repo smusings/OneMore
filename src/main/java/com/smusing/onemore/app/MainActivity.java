@@ -33,7 +33,6 @@ public class MainActivity extends SetupActivity{
         f5.getView().setBackgroundColor(getResources().getColor(R.color.SteelBlue));
         f6.getView().setBackgroundColor(getResources().getColor(R.color.Green));
 
-
         //assigns longclicklistener to all fragments so they know how to react.
         //the particular listeners are all from the SetupActivity which we extend
         f1.getView().setOnLongClickListener(myOneClickListener);

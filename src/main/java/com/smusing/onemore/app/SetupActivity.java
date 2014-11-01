@@ -47,7 +47,7 @@ public class SetupActivity extends Activity {
                 singleViewExpand = false;
             } else {
                 //if a view is not fullscreen, hides all views then expands the one you clicked on.
-               hide(f1);
+                hide(f1);
                 l2.setVisibility(View.GONE);
                 f1.showButtons();
             }
@@ -63,6 +63,7 @@ public class SetupActivity extends Activity {
             if(singleViewExpand){
                 showAllViews();
                 f2.hideButtons();
+                singleViewExpand = false;
             }else{
                 //if a view is not fullscreen, hides all views then expands the one you clicked on.
                 hide(f2);
