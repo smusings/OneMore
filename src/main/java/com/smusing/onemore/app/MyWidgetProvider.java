@@ -8,7 +8,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.widget.RemoteViews;
 
-public class MyWidgetProvider extends AppWidgetProvider{
+public class MyWidgetProvider extends AppWidgetProvider
+{
 
 
     public static final String PREF_COUNT_1 = "MyPrefsCount1";
@@ -19,7 +20,8 @@ public class MyWidgetProvider extends AppWidgetProvider{
     public static final String PREF_COUNT_6 = "MyPrefsCount6";
 
 
-    public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds){
+    public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds)
+    {
 
         //get the shared Preference from each Fragment
         SharedPreferences pref1 = context.getSharedPreferences(PREF_COUNT_1, 0);
@@ -46,23 +48,23 @@ public class MyWidgetProvider extends AppWidgetProvider{
             views.setOnClickPendingIntent(R.id.widget_layout, pendingIntent);
 
             //get the strings from each fragment
-            String count1 = pref1.getString("count", "0");
-            String id1 = pref1.getString("article", "");
+            String count1   = pref1.getString("count", "0");
+            String id1      = pref1.getString("article", "");
 
-            String count2 = pref2.getString("count", "0");
-            String id2 = pref2.getString("article", "");
+            String count2   = pref2.getString("count", "0");
+            String id2      = pref2.getString("article", "");
 
-            String count3 = pref3.getString("count", "0");
-            String id3 = pref3.getString("article", "");
+            String count3   = pref3.getString("count", "0");
+            String id3      = pref3.getString("article", "");
 
-            String count4 = pref4.getString("count", "0");
-            String id4 = pref4.getString("article", "");
+            String count4   = pref4.getString("count", "0");
+            String id4      = pref4.getString("article", "");
 
-            String count5 = pref5.getString("count", "0");
-            String id5 = pref5.getString("article", "");
+            String count5   = pref5.getString("count", "0");
+            String id5      = pref5.getString("article", "");
 
-            String count6 = pref6.getString("count", "0");
-            String id6 = pref6.getString("article", "");
+            String count6   = pref6.getString("count", "0");
+            String id6      = pref6.getString("article", "");
 
 
             //set the strings to the appropriate textview

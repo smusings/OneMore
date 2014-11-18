@@ -6,23 +6,25 @@ import android.app.FragmentManager;
 import android.view.View;
 import android.widget.LinearLayout;
 
-public class SetupActivity extends Activity {
+public class SetupActivity extends Activity
+{
 
     //setup for activity
-    FragmentManager fm = getFragmentManager();
-    public FragmentOne f1;
-    public FragmentTwo f2;
-    public FragmentThree f3;
-    public FragmentFour f4;
-    public FragmentFive f5;
-    public FragmentSix f6;
-    public LinearLayout l1;
-    public LinearLayout l2;
+           FragmentManager fm = getFragmentManager();
+    public FragmentOne     f1;
+    public FragmentTwo     f2;
+    public FragmentThree   f3;
+    public FragmentFour    f4;
+    public FragmentFive    f5;
+    public FragmentSix     f6;
+    public LinearLayout    l1;
+    public LinearLayout    l2;
 
     //boolean to set up views hidden or not
     private boolean singleViewExpand = false;
 
-    public void hide(Fragment fragment){
+    public void hide(Fragment fragment)
+    {
         fm.beginTransaction()
                 .hide(f1)
                 .hide(f2)
